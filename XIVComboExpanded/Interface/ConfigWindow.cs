@@ -11,10 +11,10 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using ImGuiNET;
-using Lumina.Excel.GeneratedSheets;
+using Lumina.Excel.Sheets;
 using XIVComboExpandedPlugin.Attributes;
 using XIVComboExpandedPlugin.Combos;
-using Action = Lumina.Excel.GeneratedSheets.Action;
+using Action = Lumina.Excel.Sheets.Action;
 using Language = Lumina.Data.Language;
 
 namespace XIVComboExpandedPlugin.Interface;
@@ -142,8 +142,8 @@ public class ConfigWindow : Window
                                             using (selected ? ImRaii.PushColor(ImGuiCol.Button, ImGuiColors.DalamudGrey2) : ImRaii.PushColor(ImGuiCol.Button, 0))
                                             using (selected ? ImRaii.PushColor(ImGuiCol.Border, ImGuiColors.DalamudGrey3) : ImRaii.PushColor(ImGuiCol.Border, 0))
                                             using (ImRaii.PushStyle(ImGuiStyleVar.FramePadding, new System.Numerics.Vector2(4f, 3f)))
+                                            using (ImRaii.PushStyle(ImGuiStyleVar.FrameBorderSize, 0))
                                             {
-                                                ImRaii.PushStyle(ImGuiStyleVar.FrameBorderSize, 0);
 
                                                 ISharedImmediateTexture image = GetJobIcon(CustomComboInfoAttribute.NameToJobID(jobName));
 
@@ -913,8 +913,6 @@ public class ConfigWindow : Window
 
         ImGui.PopItemWidth();
 
-
-
         using (ImRaii.PushColor(ImGuiCol.Text, this.shadedColor))
         {
         ImGui.TextWrapped($"{info.Description}");
@@ -1122,7 +1120,7 @@ public class ConfigWindow : Window
         Language language = (Language)Service.ClientState.ClientLanguage + 1;
         var statusList = Service.DataManager.GameData.Excel.GetSheet<Status>(language);
         var status = statusList.GetRow(skillID);
-        return status.Name;
+        return status.Name.ExtractText();
 
     }
 

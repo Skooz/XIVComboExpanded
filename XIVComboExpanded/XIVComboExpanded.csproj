@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Dalamud.NET.Sdk/11.0.0">
   <PropertyGroup>
     <Authors>attick, daemitus, Khayle</Authors>
     <Company>-</Company>
-    <Version>2.0.0.12</Version>
+    <Version>2.0.1.0</Version>
     <Description>This plugin condenses combos and mutually exclusive abilities onto a single button.</Description>
     <Copyright>Copyleft attick 2020 baybeeee</Copyright>
     <PackageProjectUrl>https://github.com/daemitus/XIVComboPlugin</PackageProjectUrl>
@@ -47,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DalamudPackager" Version="2.1.13" />
     <PackageReference Include="ILRepack" Version="2.1.0-beta1" GeneratePathProperty="true" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
       <PrivateAssets>all</PrivateAssets>

@@ -1,4 +1,4 @@
-﻿using Lumina.Excel.GeneratedSheets2;
+﻿using Lumina.Excel.Sheets;
 
 namespace XIVComboExpandedPlugin.Combos;
 
@@ -109,7 +109,7 @@ internal class StanceProvokeFeature : CustomCombo
     {
         if (actionID == ADV.Provoke)
         {
-            var job = LocalPlayer?.ClassJob.Id;
+            int job = (int)LocalPlayer?.ClassJob.RowId;
 
             if (!HasEffect(PLD.Buffs.IronWill)
                 && !HasEffect(WAR.Buffs.Defiance)
@@ -151,7 +151,7 @@ internal class ShirkStanceFeature : CustomCombo
     {
         if (actionID == ADV.Shirk && !IsCooldownUsable(ADV.Shirk))
         {
-            var job = LocalPlayer?.ClassJob.Id;
+            int job = (int)LocalPlayer?.ClassJob.RowId;
 
             if (HasEffect(PLD.Buffs.IronWill)
                 || HasEffect(WAR.Buffs.Defiance)
@@ -179,7 +179,7 @@ internal class HeadGrazePelotonFeature : CustomCombo
 
     protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
     {
-        if (actionID == ADV.HeadGraze && (LocalPlayer?.ClassJob.Id == BRD.ClassID || LocalPlayer?.ClassJob.Id == BRD.JobID || LocalPlayer?.ClassJob.Id == MCH.JobID || LocalPlayer?.ClassJob.Id == DNC.JobID))
+        if (actionID == ADV.HeadGraze && ((int)LocalPlayer?.ClassJob.RowId == BRD.ClassID || (int)LocalPlayer?.ClassJob.RowId == BRD.JobID || (int)LocalPlayer?.ClassJob.RowId == MCH.JobID || (int)LocalPlayer?.ClassJob.RowId == DNC.JobID))
         {
             if (!HasEffect(ADV.Buffs.Peloton) && !InCombat())
             {
@@ -200,7 +200,7 @@ internal class AdvAutoLucidDreamingFeature : CustomCombo
     {
         if (LocalPlayer?.CurrentMp < 5000 && CanUseAction(OriginalHook(ADV.LucidDreaming)) && IsCooldownUsable(ADV.LucidDreaming))
         {
-            var job = LocalPlayer?.ClassJob.Id;
+            int job = (int)LocalPlayer?.ClassJob.RowId;
             if (job == WHM.ClassID
             || (job == BLM.ClassID && IsEnabled(CustomComboPreset.AdvEnableBLMLucidFeature))
             || job == WHM.JobID

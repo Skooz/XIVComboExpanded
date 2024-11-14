@@ -13,6 +13,12 @@ namespace XIVComboExpanded.Interface
             return new Dictionary<string, string[]>()
                 {
                     {
+                        "v2.0.1.0",
+                        [
+                            "API 11 update. Things may still be broken, good luck testing this!"
+                        ]
+                    },
+                    {
                         "v2.0.0.12",
                         [
                             "Fixed ADV's Swift Raise Feature. Sorry about that!"

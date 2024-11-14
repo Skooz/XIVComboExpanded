@@ -71,7 +71,7 @@ internal abstract partial class CustomCombo
         if (!IsEnabled(this.Preset) || !Service.Configuration.EnablePlugin)
             return false;
 
-        var classJobID = LocalPlayer!.ClassJob.Id;
+        var classJobID = LocalPlayer!.ClassJob.RowId;
 
         if (classJobID >= 8 && classJobID <= 15)
             classJobID = DOH.JobID;
