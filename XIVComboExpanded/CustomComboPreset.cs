@@ -647,10 +647,11 @@ public enum CustomComboPreset
     [CustomComboInfo("Chocobo Partner Feature", "Also applies if you are out of duty and that your Chocobo is summoned.", DNC.JobID)]
     DancerChocoboPartnerFeature = 3816,
 
-    [IconsCombo([DNC.Devilment, UTL.ArrowLeft, DNC.StarfallDance, UTL.Blank, DNC.Buffs.FlourishingStarfall, UTL.Checkmark])]
-    [SectionCombo("Dances features")]
-    [CustomComboInfo("Devilment Feature", "Replace Devilment with Starfall Dance when active.", DNC.JobID)]
-    DancerDevilmentFeature = 3807,
+    // Retired!
+    //[IconsCombo([DNC.Devilment, UTL.ArrowLeft, DNC.StarfallDance, UTL.Blank, DNC.Buffs.FlourishingStarfall, UTL.Checkmark])]
+    //[SectionCombo("Dances features")]
+    //[CustomComboInfo("Devilment Feature", "Replace Devilment with Starfall Dance when active.", DNC.JobID)]
+    //DancerDevilmentFeature = 3807,
 
     [IconsCombo([DNC.StandardStep, UTL.ArrowLeft, DNC.LastDance, UTL.Blank, DNC.Buffs.LastDanceReady, UTL.Checkmark])]
     [SectionCombo("Dances features")]
@@ -876,6 +877,12 @@ public enum CustomComboPreset
     [ExpandedCustomCombo]
     [CustomComboInfo("Burst Strike Feature", "Replace Solid Barrel with Burst Strike when charges are full.", GNB.JobID)]
     GunbreakerBurstStrikeFeature = 3710,
+
+    [SectionCombo("Single Target")]
+    [IconsCombo([GNB.BrutalShell, UTL.ArrowLeft, GNB.KeenEdge])]
+    [SecretCustomCombo]
+    [CustomComboInfo("Brutal Shell Combo", "Replace Brutal Shell with Keen Edge but doesn't change to Solid Barrel, for sustaining purposes.", GNB.JobID)]
+    GunbreakerBrutalShellCombo = 3727,
 
     [SectionCombo("Single Target")]
     [IconsCombo([GNB.BurstStrike, UTL.ArrowLeft, GNB.DoubleDown])]

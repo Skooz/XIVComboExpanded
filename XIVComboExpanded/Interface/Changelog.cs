@@ -13,15 +13,45 @@ namespace XIVComboExpanded.Interface
             return new Dictionary<string, string[]>()
                 {
                     {
+                        "v2.0.1.1",
+                        [
+                            "Added BLM's Enochian Umbral Ice Feature by @lhn1703.",
+                            "Added BRD's Automatic Iron Jaws Apex Feature by @kaedys",
+                            "Added BRD's Battle Finale Feature by @kaedys.",
+                            "Added BRD's Radiant Strikes feature by @kaedys.",
+                            "Added DNC's Tillana Overcap Prevention Feature by @kaedys.",
+                            "Added DRK's Souleater Overcap Optimized Feature by @lhn1703.",
+                            "Added DRK's Stalwart Soul Overcap Optimized Feature by @lhn1703.",
+                            "Added DRK's Disesteem Feature & Disesteem Souleater Feature by @lhn1703.",
+                            "Added GNB's Brutal Shell Combo for sustaining purposes.",
+                            "Added NIN's various Aeolian Edge|Armor Crush / Fleeting Raiju|Forked Raiju Features by @kaedys.",
+                            "Added RPR's Soul Scythe Guillotine Feature by @kaedys.",
+                            "Added VPR's Serpent's Fang Feature & Include all oGCDs Option by @kaedys.",
+                            "Fixed BLM's Enochian Timer feature where it could try to cast Despair even if you lack the MP by @kaedys.",
+                            "Fixed DNC's Automatic Saber Dance features for AoE that were using the single target feature instead by @kaedys.",
+                            "Fixed NIN's Kazematoi feature conflicting with (or requiring) the Aeolian Edge combo feature by @kaedys.",
+                            "Fixed VPR's combos when the player has neither Honed buff so that the combo buttons are left alone, rather than \nboth being replaced with Steel Fangs/Maw by @kaedys.",
+                            "Removed BLM's Enochian active conditional for replacing Transpose and Umbral Soul by @kaedys.",
+                            "Removed DNC's Devilment into Starfall Combo as 7.1 made this native.",
+                            "Removed MNK's conflicts for Coeurl Feature and Raptor Feature with Monke Mode by @kaedys.",
+                            "Reworked SAM's Shoha features to prioritize it over Zanshin if both are available when replacing Shinten by @kaedys.",
+                            "Reworked SGE's Sectioning by @kaedys.",
+                            "Reworked DRG's Geirskogul to Wyrmwind Thrust feature to prioritize it over Nastrond, since the latter has effectively no cooldown during LotD.\n The priority for usage is now Geirskogal > Wyrmwind > Nastrond.",
+                            "Added level check for NIN's Trick Attack in the Kassatsu Trick feature by @kaedys.",
+                            "Added level check for RPR's Automatic Soul Slice/Scythe features by @kaedys.",
+                        ]
+                    },
+                    {
                         "v2.0.1.0",
                         [
-                            "API 11 update. Things may still be broken, good luck testing this!"
+                            "API 11 update. Things are still partially broken, please do not post issues on GitHub for now."
                         ]
                     },
                     {
                         "v2.0.0.12",
                         [
-                            "Fixed ADV's Swift Raise Feature. Sorry about that!"
+                            "Fixed ADV's Swift Raise Feature. Sorry about that!",
+                            "Added GNB's Empty Blood Reign Feature by @aldros-ffxi."
                         ]
                     },
                     {

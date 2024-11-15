@@ -130,6 +130,21 @@ internal class GunbreakerSolidBarrel : CustomCombo
     }
 }
 
+internal class GunbreakerBrutalShell : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.GunbreakerBrutalShellCombo;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == GNB.BrutalShell && lastComboMove != GNB.KeenEdge)
+        {
+            return GNB.KeenEdge;
+        }
+
+        return actionID;
+    }
+}
+
 internal class GunbreakerGnashingFang : CustomCombo
 {
     protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.GunbreakerGnashingFangCont;

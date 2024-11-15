@@ -371,14 +371,13 @@ internal class DancerWindmillBladeshower : CustomCombo
 
 internal class DancerDevilment : CustomCombo
 {
-    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.DancerDevilmentFeature;
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.DancerPartnerFeature;
 
     protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
     {
         if (actionID == DNC.Devilment)
         {
-            if (IsEnabled(CustomComboPreset.DancerPartnerFeature) && level >= DNC.Levels.ClosedPosition &&
-                (!HasEffect(DNC.Buffs.ClosedPosition)))
+            if (level >= DNC.Levels.ClosedPosition && (!HasEffect(DNC.Buffs.ClosedPosition)))
             {
                 if (IsEnabled(CustomComboPreset.DancerChocoboPartnerFeature) && HasCompanionPresent())
                 {
@@ -388,9 +387,6 @@ internal class DancerDevilment : CustomCombo
                 if (IsInParty() && IsInInstance())
                     return DNC.ClosedPosition;
             }
-
-            if (level >= DNC.Levels.StarfallDance && HasEffect(DNC.Buffs.FlourishingStarfall))
-                return DNC.StarfallDance;
         }
 
         return actionID;
