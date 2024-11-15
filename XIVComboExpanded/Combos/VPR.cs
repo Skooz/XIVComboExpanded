@@ -103,7 +103,7 @@ internal static class VPR
             ReavingMaw = 35,
             Slither = 40,
             HuntersBite = 40,
-            SwiftskinsBike = 45,
+            SwiftskinsBite = 45,
             AoE3rdCombo = 50,    // Jagged Maw and Bloodied Maw
             DeathRattle = 55,
             LastLash = 60,
@@ -241,10 +241,10 @@ internal class ViperFangs : CustomCombo
             if (IsEnabled(CustomComboPreset.ViperAutoSteelReavingFeature) &&
                 OriginalHook(VPR.SteelFangs) == VPR.SteelFangs)
             {
-                if (HasEffect(VPR.Buffs.HonedReavers))
+                if (HasEffect(VPR.Buffs.HonedReavers) && level >= VPR.Levels.ReavingFangs)
                     return VPR.ReavingFangs;
 
-                if (HasEffect(VPR.Buffs.HonedSteel))
+                if (HasEffect(VPR.Buffs.HonedSteel) && level >= VPR.Levels.SteelFangs)
                     return VPR.SteelFangs;
             }
 
@@ -260,7 +260,8 @@ internal class ViperFangs : CustomCombo
                     // Combo step 2, prioritize whichever buff we don't have. Starts with Swiftscaled since that speeds up the rotation significantly
                     case VPR.HuntersSting:
                         if (HasEffect(VPR.Buffs.FlanksbaneVenom) ||
-                            HasEffect(VPR.Buffs.FlankstungVenom))
+                            HasEffect(VPR.Buffs.FlankstungVenom) ||
+                            level <= VPR.Levels.SwiftskinsSting)
                             return VPR.HuntersSting;
                         if (HasEffect(VPR.Buffs.HindsbaneVenom) ||
                             HasEffect(VPR.Buffs.HindstungVenom))
@@ -439,7 +440,7 @@ internal class ViperMaws : CustomCombo
                     case VPR.HuntersBite:
                         var swift = FindEffect(VPR.Buffs.Swiftscaled);
                         var instinct = FindEffect(VPR.Buffs.HuntersInstinct);
-                        if (swift is null || swift?.RemainingTime <= instinct?.RemainingTime) // We'd always want to prioritize swift since it speeds up the rotation
+                        if ((swift is null || swift?.RemainingTime <= instinct?.RemainingTime) && level >= VPR.Levels.SwiftskinsBite) // We'd always want to prioritize swift since it speeds up the rotation
                             return VPR.SwiftskinsBite;
 
                         return VPR.HuntersBite;

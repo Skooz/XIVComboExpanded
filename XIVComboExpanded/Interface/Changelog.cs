@@ -37,8 +37,10 @@ namespace XIVComboExpanded.Interface
                             "Reworked SAM's Shoha features to prioritize it over Zanshin if both are available when replacing Shinten by @kaedys.",
                             "Reworked SGE's Sectioning by @kaedys.",
                             "Reworked DRG's Geirskogul to Wyrmwind Thrust feature to prioritize it over Nastrond, since the latter has effectively no cooldown during LotD.\n The priority for usage is now Geirskogal > Wyrmwind > Nastrond.",
+                            "Added PCT checks to determine whether oGCDs can be used or not to prevent No Abilities in Deep Dungeons to lock you in unusable skills.",
                             "Added level check for NIN's Trick Attack in the Kassatsu Trick feature by @kaedys.",
                             "Added level check for RPR's Automatic Soul Slice/Scythe features by @kaedys.",
+                            "Added level checks for VPR's PvP Main & AoE Style Combos.",
                         ]
                     },
                     {

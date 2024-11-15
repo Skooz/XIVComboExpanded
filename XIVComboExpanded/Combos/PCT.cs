@@ -152,13 +152,13 @@ internal static class PCT
 
                 if (IsEnabled(CustomComboPreset.PictomancerAutoMogCombo))
                 {
-                    if ((gauge.MooglePortraitReady || gauge.MadeenPortraitReady) && GetRemainingCharges(PCT.MogOftheAges) > 0)
+                    if ((gauge.MooglePortraitReady || gauge.MadeenPortraitReady) && GetRemainingCharges(PCT.MogOftheAges) > 0 && CanUseAction(OriginalHook(PCT.MogOftheAges)))
                     {
                         return OriginalHook(PCT.MogOftheAges);
                     }
                 }
 
-                if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAutoCombo) && !HasEffect(PCT.Buffs.SubstractivePalette))
+                if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAutoCombo) && !HasEffect(PCT.Buffs.SubstractivePalette) && CanUseAction(OriginalHook(PCT.SubstractivePalette)))
                 {
                     if (IsEnabled(CustomComboPreset.PictomancerSubtractiveEarlyAutoCombo)
                         && (gauge.PalleteGauge >= 50 || HasEffect(PCT.Buffs.SubstractivePaletteReady)))
@@ -215,7 +215,7 @@ internal static class PCT
 
             if (actionID == PCT.ExtraBlizzardCyan)
             {
-                if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAutoCombo) && !HasEffect(PCT.Buffs.SubstractivePalette))
+                if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAutoCombo) && !HasEffect(PCT.Buffs.SubstractivePalette) && CanUseAction(OriginalHook(PCT.SubstractivePalette)))
                 {
                     if (IsEnabled(CustomComboPreset.PictomancerSubtractiveEarlyAutoCombo)
                         && (gauge.PalleteGauge >= 50 || HasEffect(PCT.Buffs.SubstractivePaletteReady)))
@@ -259,7 +259,7 @@ internal static class PCT
             var gauge = GetJobGauge<PCTGauge>();
             if (actionID == PCT.WaterBlue || actionID == PCT.ExtraWaterBlue)
             {
-                if (HasEffect(PCT.Buffs.Chroma3Ready) && !HasEffect(PCT.Buffs.SubstractivePalette) && gauge.PalleteGauge == 100)
+                if (HasEffect(PCT.Buffs.Chroma3Ready) && !HasEffect(PCT.Buffs.SubstractivePalette) && gauge.PalleteGauge == 100 && CanUseAction(OriginalHook(PCT.SubstractivePalette)))
                 {
                     return PCT.SubstractivePalette;
                 }
@@ -300,7 +300,7 @@ internal static class PCT
 
             if (actionID == PCT.CreatureMotif)
             {
-                if (IsEnabled(CustomComboPreset.PictomancerCreatureMogCombo))
+                if (IsEnabled(CustomComboPreset.PictomancerCreatureMogCombo) && CanUseAction(OriginalHook(PCT.MogOftheAges)))
                 {
                     if (gauge.MooglePortraitReady || gauge.MadeenPortraitReady)
                     {

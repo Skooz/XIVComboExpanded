@@ -183,13 +183,13 @@ internal class GunbreakerBurstStrikeFatedCircle : CustomCombo
         {
             if (IsEnabled(CustomComboPreset.GunbreakerBurstStrikeCont))
             {
-                if (level >= GNB.Levels.EnhancedContinuation && HasEffect(GNB.Buffs.ReadyToBlast))
+                if (level >= GNB.Levels.EnhancedContinuation && HasEffect(GNB.Buffs.ReadyToBlast) && CanUseAction(OriginalHook(GNB.Hypervelocity)))
                     return GNB.Hypervelocity;
             }
 
             if (IsEnabled(CustomComboPreset.GunbreakerBurstStrikeDangerZone))
             {
-                if (level >= GNB.Levels.DangerZone && IsCooldownUsable(GNB.DangerZone))
+                if (level >= GNB.Levels.DangerZone && IsCooldownUsable(GNB.DangerZone) && CanUseAction(OriginalHook(GNB.DangerZone)))
                     return OriginalHook(GNB.DangerZone);
             }
 
@@ -327,7 +327,7 @@ internal class GunbreakerNoMercy : CustomCombo
             {
                 if (level >= GNB.Levels.NoMercy && HasEffect(GNB.Buffs.NoMercy))
                 {
-                    if (level >= GNB.Levels.DoubleDown && gauge.Ammo >= 2 && IsCooldownUsable(GNB.DoubleDown))
+                    if (level >= GNB.Levels.DoubleDown && gauge.Ammo >= 1 && IsCooldownUsable(GNB.DoubleDown))
                         return GNB.DoubleDown;
                 }
             }
@@ -423,7 +423,7 @@ internal class GunbreakerTrajectoryDowngradeFeature : CustomCombo
     {
         if (actionID == GNB.Trajectory)
         {
-            if (level <= GNB.Levels.Trajectory)
+            if (level <= GNB.Levels.Trajectory || !CanUseAction(GNB.Trajectory))
                 return GNB.LightningShot;
         }
 

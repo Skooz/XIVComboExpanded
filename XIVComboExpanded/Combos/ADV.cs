@@ -181,7 +181,7 @@ internal class HeadGrazePelotonFeature : CustomCombo
     {
         if (actionID == ADV.HeadGraze && ((int)LocalPlayer?.ClassJob.RowId == BRD.ClassID || (int)LocalPlayer?.ClassJob.RowId == BRD.JobID || (int)LocalPlayer?.ClassJob.RowId == MCH.JobID || (int)LocalPlayer?.ClassJob.RowId == DNC.JobID))
         {
-            if (!HasEffect(ADV.Buffs.Peloton) && !InCombat())
+            if (!HasEffect(ADV.Buffs.Peloton) && !InCombat() && CanUseAction(OriginalHook(ADV.Peloton)))
             {
                 return ADV.Peloton;
             }
