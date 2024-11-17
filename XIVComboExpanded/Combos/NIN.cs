@@ -21,6 +21,8 @@ internal static class NIN
         Suiton = 2271,
         ArmorCrush = 3563,
         DreamWithinADream = 3566,
+        Hellfrog = 7401,
+        Bhavacakra = 7402,
         TenChiJin = 7403,
         HakkeMujinsatsu = 16488,
         Meisui = 16489,
@@ -294,6 +296,24 @@ internal class NinjaNinjutsu : CustomCombo
 
                 if (IsEnabled(CustomComboPreset.NinjaNinjutsuFleetingRaijuFeature))
                     return NIN.FleetingRaiju;
+            }
+        }
+
+        return actionID;
+    }
+}
+
+internal class NinjaFrogLevelSync : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.NinjaFrogLevelSyncFeature;
+
+    protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+    {
+        if (actionID == NIN.Bhavacakra)
+        {
+            if (level < NIN.Levels.Bhavacakra)
+            {
+                return NIN.Hellfrog;
             }
         }
 

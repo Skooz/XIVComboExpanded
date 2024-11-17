@@ -1347,6 +1347,12 @@ public enum CustomComboPreset
     [CustomComboInfo("Hide to Ninjutsu", "Replace Hide with Ninjutsu if any Mudra are active. Takes precedence over Hide to Mug/Dokumori.", NIN.JobID)]
     NinjaHideNinjutsuFeature = 3020,
 
+    [IconsCombo([NIN.Bhavacakra, UTL.ArrowLeft, NIN.Hellfrog])]
+    [SectionCombo("Level Synchronization")]
+    [ExpandedCustomCombo]
+    [CustomComboInfo("Bhavacakra to Hellfrog Level Sync", "Replace Bhavacakra with Hellfrog Medium when synced below 68.", NIN.JobID)]
+    NinjaFrogLevelSyncFeature = 3024,
+
     #endregion
     // ====================================================================================
     #region PALADIN
