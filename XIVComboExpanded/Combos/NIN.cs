@@ -114,7 +114,7 @@ internal class NinjaAeolianEdge : CustomCombo
                     return NIN.FleetingRaiju;
 
                 if (IsEnabled(CustomComboPreset.NinjaAeolianEdgeForkedRaijuFeature))
-                    return NIN.FleetingRaiju;
+                    return NIN.ForkedRaiju;
             }
 
             if (IsEnabled(CustomComboPreset.NinjaKazematoiFeature))
@@ -154,7 +154,7 @@ internal class NinjaArmorCrush : CustomCombo
                     return NIN.FleetingRaiju;
 
                 if (IsEnabled(CustomComboPreset.NinjaArmorCrushForkedRaijuFeature))
-                    return NIN.FleetingRaiju;
+                    return NIN.ForkedRaiju;
             }
 
             if (IsEnabled(CustomComboPreset.NinjaArmorCrushNinjutsuFeature))
