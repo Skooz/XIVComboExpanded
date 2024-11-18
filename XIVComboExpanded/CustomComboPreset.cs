@@ -2378,7 +2378,7 @@ public enum CustomComboPreset
     [SectionCombo("Vice Combos")]
     [IconsCombo([VPR.SteelFangs, VPR.ReavingFangs, VPR.SteelMaw, VPR.ReavingMaw, UTL.ArrowLeft, VPR.HuntersCoil, VPR.SwiftskinsCoil, VPR.HuntersDen, VPR.SwiftskinsDen])]
     [ExpandedCustomCombo]
-    [CustomComboInfo("Steel Coil Feature", "Replace Steel Fangs with Swiftskin's Coil, Reaving Fangs with Hunter's Coil, Steel Maw with Swiftskin's Den, and Reaving Maw with Hunter's Den when usable.\n\nNOTE: Also replaces Steel Fangs/Maw with both First and Third Generation, and Reaving Fangs/Maw with both Second and Fourth Generation.", VPR.JobID)]
+    [CustomComboInfo("Steel Coil Feature", "Replace Steel Fangs with Hunter's Coil, Reaving Fangs with Swiftskins's Coil, Steel Maw with Hunter's Den, and Reaving Maw with Swiftskin's Den when usable.\n\nNOTE: Also replaces Steel Fangs/Maw with both First and Third Generation, and Reaving Fangs/Maw with both Second and Fourth Generation.", VPR.JobID)]
     ViperSteelCoilFeature = 4126,
 
     [SectionCombo("Vice Combos")]
@@ -2386,6 +2386,13 @@ public enum CustomComboPreset
     [AccessibilityCustomCombo]
     [CustomComboInfo("Twin Coil Feature", "Replace Swiftskin's Coil/Den and Hunter's Coil/Den with their respective Twinblood and Twinfang skills, in the correct order.", VPR.JobID)]
     ViperTwinCoilFeature = 4103,
+
+    [SectionCombo("Vice Combos")]
+    [IconsCombo([VPR.HuntersCoil, VPR.HuntersDen, UTL.ArrowLeft, VPR.Twinfang, UTL.Blank, VPR.SwiftskinsCoil, VPR.SwiftskinsDen, UTL.ArrowLeft, VPR.Twinblood])]
+    [AccessibilityCustomCombo]
+    [ParentCombo(ViperTwinCoilFeature)]
+    [CustomComboInfo("Twin Coil Single Replacement", "Instead of replacing both Coil/Den abilities with both Twin oGCDs in the correct order, Hunter's Coil/Den will always be replaced with only Twinfang, and Swiftskin's Coil/Den will always be replaced with only Twinblood, regardless of which is empowered./n/nNOTE: This is for players that enjoy the quick 1-2 of having the Twin oGCDs on separate buttons, but still want to place the oGCDs on the Coil/Den buttons.", VPR.JobID)]
+    ViperTwinCoilSingularOption = 4130,
 
     [SectionCombo("Vice Combos")]
     [IconsCombo([VPR.SteelFangs, VPR.ReavingFangs, UTL.ArrowLeft, VPR.Vicewinder])]
