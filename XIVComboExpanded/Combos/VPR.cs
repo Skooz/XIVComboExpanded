@@ -9,57 +9,57 @@ internal static class VPR
     public const byte JobID = 41;
 
     public const uint
-            SteelFangs = 34606,
-            ReavingFangs = 34607,
-            HuntersSting = 34608,
-            SwiftskinsSting = 34609,
-            FlankstingStrike = 34610,
-            FlanksbaneFang = 34611,
-            HindstingStrike = 34612,
-            HindsbaneFang = 34613,
+        SteelFangs = 34606,
+        ReavingFangs = 34607,
+        HuntersSting = 34608,
+        SwiftskinsSting = 34609,
+        FlankstingStrike = 34610,
+        FlanksbaneFang = 34611,
+        HindstingStrike = 34612,
+        HindsbaneFang = 34613,
 
-            SteelMaw = 34614,
-            ReavingMaw = 34615,
-            HuntersBite = 34616,
-            SwiftskinsBite = 34617,
-            JaggedMaw = 34618,
-            BloodiedMaw = 34619,
+        SteelMaw = 34614,
+        ReavingMaw = 34615,
+        HuntersBite = 34616,
+        SwiftskinsBite = 34617,
+        JaggedMaw = 34618,
+        BloodiedMaw = 34619,
 
-            Vicewinder = 34620,
-            HuntersCoil = 34621,
-            SwiftskinsCoil = 34622,
-            VicePit = 34623,
-            HuntersDen = 34624,
-            SwiftskinsDen = 34625,
+        Vicewinder = 34620,
+        HuntersCoil = 34621,
+        SwiftskinsCoil = 34622,
+        VicePit = 34623,
+        HuntersDen = 34624,
+        SwiftskinsDen = 34625,
 
-            SerpentsTail = 35920,
-            DeathRattle = 34634,
-            LastLash = 34635,
-            Twinfang = 35921,
-            Twinblood = 35922,
-            TwinfangBite = 34636,
-            TwinfangThresh = 34638,
-            TwinbloodBite = 34637,
-            TwinbloodThresh = 34639,
+        SerpentsTail = 35920,
+        DeathRattle = 34634,
+        LastLash = 34635,
+        Twinfang = 35921,
+        Twinblood = 35922,
+        TwinfangBite = 34636,
+        TwinfangThresh = 34638,
+        TwinbloodBite = 34637,
+        TwinbloodThresh = 34639,
 
-            UncoiledFury = 34633,
-            UncoiledTwinfang = 34644,
-            UncoiledTwinblood = 34645,
+        UncoiledFury = 34633,
+        UncoiledTwinfang = 34644,
+        UncoiledTwinblood = 34645,
 
-            SerpentsIre = 34647,
-            Reawaken = 34626,
-            FirstGeneration = 34627,
-            SecondGeneration = 34628,
-            ThirdGeneration = 34629,
-            FourthGeneration = 34630,
-            Ouroboros = 34631,
-            FirstLegacy = 34640,
-            SecondLegacy = 34641,
-            ThirdLegacy = 34642,
-            FourthLegacy = 34643,
+        SerpentsIre = 34647,
+        Reawaken = 34626,
+        FirstGeneration = 34627,
+        SecondGeneration = 34628,
+        ThirdGeneration = 34629,
+        FourthGeneration = 34630,
+        Ouroboros = 34631,
+        FirstLegacy = 34640,
+        SecondLegacy = 34641,
+        ThirdLegacy = 34642,
+        FourthLegacy = 34643,
 
-            WrithingSnap = 34632,
-            Slither = 34646;
+        WrithingSnap = 34632,
+        Slither = 34646;
 
     public static class Buffs
     {
@@ -186,17 +186,30 @@ internal class ViperFangs : CustomCombo
 
                 if (IsEnabled(CustomComboPreset.ViperTwinCoilFeature))
                 {
-                    if (HasEffect(VPR.Buffs.HuntersVenom) && CanUseAction(VPR.TwinfangBite))
-                        return VPR.TwinfangBite;
+                    if (IsEnabled(CustomComboPreset.ViperTwinCoilSingularOption))
+                    {
+                        if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && CanUseAction(VPR.TwinfangBite) &&
+                            actionID == VPR.SteelFangs)
+                            return VPR.TwinfangBite;
 
-                    if (HasEffect(VPR.Buffs.SwiftskinsVenom) && CanUseAction(VPR.TwinbloodBite))
-                        return VPR.TwinbloodBite;
+                        if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodBite && CanUseAction(VPR.TwinbloodBite) &&
+                            actionID == VPR.ReavingFangs)
+                            return VPR.TwinbloodBite;
+                    }
+                    else
+                    {
+                        if (HasEffect(VPR.Buffs.HuntersVenom) && CanUseAction(VPR.TwinfangBite))
+                            return VPR.TwinfangBite;
 
-                    if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && CanUseAction(VPR.TwinfangBite))
-                        return VPR.TwinfangBite;
+                        if (HasEffect(VPR.Buffs.SwiftskinsVenom) && CanUseAction(VPR.TwinbloodBite))
+                            return VPR.TwinbloodBite;
 
-                    if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodBite && CanUseAction(VPR.TwinbloodBite))
-                        return VPR.TwinbloodBite;
+                        if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && CanUseAction(VPR.TwinfangBite))
+                            return VPR.TwinfangBite;
+
+                        if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodBite && CanUseAction(VPR.TwinbloodBite))
+                            return VPR.TwinbloodBite;
+                    }
                 }
 
                 if (gauge.AnguineTribute > 0)
@@ -373,17 +386,30 @@ internal class ViperMaws : CustomCombo
 
                 if (IsEnabled(CustomComboPreset.ViperTwinCoilFeature))
                 {
-                    if (HasEffect(VPR.Buffs.FellhuntersVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinfangThresh))
-                        return VPR.TwinfangThresh;
+                    if (IsEnabled(CustomComboPreset.ViperTwinCoilSingularOption))
+                    {
+                        if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && CanUseAction(VPR.TwinfangThresh) &&
+                            actionID == VPR.SteelMaw)
+                            return VPR.TwinfangThresh;
 
-                    if (HasEffect(VPR.Buffs.FellskinsVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinbloodThresh))
-                        return VPR.TwinbloodThresh;
+                        if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodThresh && CanUseAction(VPR.TwinbloodThresh) &&
+                            actionID == VPR.ReavingMaw)
+                            return VPR.TwinbloodThresh;
+                    }
+                    else
+                    {
+                        if (HasEffect(VPR.Buffs.FellhuntersVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinfangThresh))
+                            return VPR.TwinfangThresh;
 
-                    if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && CanUseAction(VPR.TwinfangThresh))
-                        return VPR.TwinfangThresh;
+                        if (HasEffect(VPR.Buffs.FellskinsVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinbloodThresh))
+                            return VPR.TwinbloodThresh;
 
-                    if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodThresh && CanUseAction(VPR.TwinbloodThresh))
-                        return VPR.TwinbloodThresh;
+                        if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && CanUseAction(VPR.TwinfangThresh))
+                            return VPR.TwinfangThresh;
+
+                        if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodThresh && CanUseAction(VPR.TwinbloodThresh))
+                            return VPR.TwinbloodThresh;
+                    }
                 }
 
                 if (gauge.AnguineTribute > 0)
@@ -484,17 +510,30 @@ internal class ViperCoils : CustomCombo
 
             if (IsEnabled(CustomComboPreset.ViperTwinCoilFeature))
             {
-                if (HasEffect(VPR.Buffs.HuntersVenom) && CanUseAction(VPR.TwinfangBite))
-                    return VPR.TwinfangBite;
+                if (IsEnabled(CustomComboPreset.ViperTwinCoilSingularOption))
+                {
+                    if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && CanUseAction(VPR.TwinfangBite) &&
+                        actionID == VPR.HuntersCoil)
+                        return VPR.TwinfangBite;
 
-                if (HasEffect(VPR.Buffs.SwiftskinsVenom) && CanUseAction(VPR.TwinbloodBite))
-                    return VPR.TwinbloodBite;
+                    if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodBite && CanUseAction(VPR.TwinbloodBite) &&
+                        actionID == VPR.SwiftskinsCoil)
+                        return VPR.TwinbloodBite;
+                }
+                else
+                {
+                    if (HasEffect(VPR.Buffs.HuntersVenom) && CanUseAction(VPR.TwinfangBite))
+                        return VPR.TwinfangBite;
 
-                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && CanUseAction(VPR.TwinfangBite))
-                    return VPR.TwinfangBite;
+                    if (HasEffect(VPR.Buffs.SwiftskinsVenom) && CanUseAction(VPR.TwinbloodBite))
+                        return VPR.TwinbloodBite;
 
-                if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodBite && CanUseAction(VPR.TwinbloodBite))
-                    return VPR.TwinbloodBite;
+                    if (OriginalHook(VPR.Twinfang) == VPR.TwinfangBite && CanUseAction(VPR.TwinfangBite))
+                        return VPR.TwinfangBite;
+
+                    if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodBite && CanUseAction(VPR.TwinbloodBite))
+                        return VPR.TwinbloodBite;
+                }
             }
         }
 
@@ -521,17 +560,30 @@ internal class ViperDens : CustomCombo
 
             if (IsEnabled(CustomComboPreset.ViperTwinCoilFeature))
             {
-                if (HasEffect(VPR.Buffs.FellhuntersVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinfangThresh))
-                    return VPR.TwinfangThresh;
+                if (IsEnabled(CustomComboPreset.ViperTwinCoilSingularOption))
+                {
+                    if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && CanUseAction(VPR.TwinfangThresh) &&
+                        actionID == VPR.SteelMaw)
+                        return VPR.TwinfangThresh;
 
-                if (HasEffect(VPR.Buffs.FellskinsVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinbloodThresh))
-                    return VPR.TwinbloodThresh;
+                    if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodThresh && CanUseAction(VPR.TwinbloodThresh) &&
+                        actionID == VPR.ReavingMaw)
+                        return VPR.TwinbloodThresh;
+                }
+                else
+                {
+                    if (HasEffect(VPR.Buffs.FellhuntersVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinfangThresh))
+                        return VPR.TwinfangThresh;
 
-                if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && CanUseAction(VPR.TwinfangThresh))
-                    return VPR.TwinfangThresh;
+                    if (HasEffect(VPR.Buffs.FellskinsVenom) && level >= VPR.Levels.TwinsAoE && CanUseAction(VPR.TwinbloodThresh))
+                        return VPR.TwinbloodThresh;
 
-                if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodThresh && CanUseAction(VPR.TwinbloodThresh))
-                    return VPR.TwinbloodThresh;
+                    if (OriginalHook(VPR.Twinfang) == VPR.TwinfangThresh && CanUseAction(VPR.TwinfangThresh))
+                        return VPR.TwinfangThresh;
+
+                    if (OriginalHook(VPR.Twinblood) == VPR.TwinbloodThresh && CanUseAction(VPR.TwinbloodThresh))
+                        return VPR.TwinbloodThresh;
+                }
             }
         }
 
