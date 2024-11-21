@@ -73,7 +73,7 @@ internal static class SAM
             HissatsuKyuten = 64,
             HissatsuGuren = 70,
             HissatsuSenei = 72,
-            TsubameGaeshi = 76,
+            TsubameGaeshi = 74,
             Shoha = 80,
             // Shoha2 = 82,
             Hyosetsu = 86,
