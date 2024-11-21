@@ -1461,30 +1461,30 @@ public enum CustomComboPreset
     // ====================================================================================
     #region PICTOMANCER
 
-    [IconsCombo([PCT.BlizzardCyan, UTL.ArrowLeft, PCT.FireRed, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
+    [IconsCombo([PCT.BlizzardCyanST, UTL.ArrowLeft, PCT.FireRedST, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
     [SectionCombo("Substractive")]
     [CustomComboInfo("Subtractive Single-Target Combo", "Replace Blizzard in Cyan and its combo chain with Fire in Red and its combo chain when Subtractive Palette is not active.", PCT.JobID)]
     PictomancerSubtractiveSTCombo = 4201,
 
-    [IconsCombo([PCT.ExtraBlizzardCyan, UTL.ArrowLeft, PCT.ExtraFireRed, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
+    [IconsCombo([PCT.BlizzardCyanAoE, UTL.ArrowLeft, PCT.FireRedAoE, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
     [SectionCombo("Substractive")]
     [CustomComboInfo("Subtractive AoE Combo", "Replace Blizzard II in Cyan and its combo chain with Fire II in Red and its combo chain when Subtractive Palette is not active.", PCT.JobID)]
     PictomancerSubtractiveAoECombo = 4202,
 
-    [IconsCombo([PCT.FireRed, UTL.ArrowLeft, PCT.SubstractivePalette, UTL.Blank, UTL.Blank, UTL.Danger])]
+    [IconsCombo([PCT.FireRedST, UTL.ArrowLeft, PCT.SubstractivePalette, UTL.Blank, UTL.Blank, UTL.Danger])]
     [SectionCombo("Substractive")]
     [ExpandedCustomCombo]
     [CustomComboInfo("Don't overcap Subtractive", "Replace Fire in Red and Fire II in Red, and their combo chains, with Subtractive Palette if the next cast in the chain would overcap the Palette Gauge.", PCT.JobID)]
     PictomancerSubtractiveAutoCombo = 4205,
 
-    [IconsCombo([PCT.FireRed, UTL.ArrowLeft, PCT.SubstractivePalette, UTL.Blank, PCT.Buffs.SubstractivePalette, UTL.Checkmark])]
+    [IconsCombo([PCT.FireRedST, UTL.ArrowLeft, PCT.SubstractivePalette, UTL.Blank, PCT.Buffs.SubstractivePalette, UTL.Checkmark])]
     [SectionCombo("Substractive")]
     [AccessibilityCustomCombo]
     [ParentCombo(CustomComboPreset.PictomancerSubtractiveAutoCombo)]
     [CustomComboInfo("Subtractive Early Autocast", "Do it as soon as you reach 50 Palette gauge or you are under the effect of Substractive Palette Ready instead.", PCT.JobID)]
     PictomancerSubtractiveEarlyAutoCombo = 4221,
 
-    [IconsCombo([PCT.CreatureMotif, UTL.ArrowLeft, PCT.PomMuse, PCT.WingedMuse, PCT.ClawedMuse, PCT.FangedMuse, UTL.Blank, PCT.CreatureMotifDrawn, UTL.Checkmark])]
+    [IconsCombo([PCT.CreatureMotif, UTL.ArrowLeft, PCT.LivingMuse, UTL.Blank, PCT.PomMuse, PCT.WingedMuse, PCT.ClawedMuse, PCT.FangedMuse, UTL.Checkmark])]
     [SectionCombo("Muses & Motifs")]
     [CustomComboInfo("Creature Muse/Motif Combo", "Replace Creature Motifs with Creature Muses when the Creature Canvas is painted.", PCT.JobID)]
     PictomancerCreatureMotifCombo = 4206,
@@ -1495,13 +1495,13 @@ public enum CustomComboPreset
     [CustomComboInfo("Creature Muse/Mog of the Ages Combo", "Also replace Creature Motifs with Mog of the Ages and Retribution of the Madeen when they are usable.", PCT.JobID)]
     PictomancerCreatureMogCombo = 4207,
 
-    [IconsCombo([PCT.FireRed, PCT.ExtraFireRed, UTL.ArrowLeft, PCT.MogOftheAges, PCT.Retribution, UTL.Blank, PCT.MogOftheAges, PCT.Retribution, UTL.Checkmark])]
+    [IconsCombo([PCT.FireRedST, PCT.FireRedAoE, UTL.ArrowLeft, PCT.MogOftheAges, PCT.Retribution, UTL.Blank, PCT.MogOftheAges, PCT.Retribution, UTL.Checkmark])]
     [SectionCombo("Muses & Motifs")]
     [AccessibilityCustomCombo]
     [CustomComboInfo("Mog of the Ages Autocast", "Replace Fire in Red, Fire II in Red, Blizzard in Cyan, Blizzard II in Cyan, and their combo chains, with Mog of the Ages and Retribution of the Madeen when they are usable.", PCT.JobID)]
     PictomancerAutoMogCombo = 4220,
 
-    [IconsCombo([PCT.HammerMotif, UTL.ArrowLeft, PCT.StrikingMuse, UTL.Blank, PCT.WeaponMotifDrawn, UTL.Checkmark])]
+    [IconsCombo([PCT.WeaponMotif, UTL.ArrowLeft, PCT.StrikingMuse, UTL.Blank, PCT.HammerMotif, UTL.Checkmark])]
     [SectionCombo("Muses & Motifs")]
     [CustomComboInfo("Weapon Muse/Motif Combo", "Replace Hammer Motif with Striking Muse when the Weapon Canvas is painted.", PCT.JobID)]
     PictomancerWeaponMotifCombo = 4208,
@@ -1511,47 +1511,47 @@ public enum CustomComboPreset
     [CustomComboInfo("Hammer Time", "Replace Hammer Motif with Hammer Brush and its combo chain when they are usable.", PCT.JobID)]
     PictomancerWeaponHammerCombo = 4209,
 
-    [IconsCombo([PCT.LandscapeMotif, UTL.ArrowLeft, PCT.StarryMuse, UTL.Blank, PCT.LandscapeMotifDrawn, UTL.Checkmark])]
+    [IconsCombo([PCT.LandscapeMotif, UTL.ArrowLeft, PCT.ScenicMuse, UTL.Blank, PCT.StarryMuse, UTL.Checkmark])]
     [SectionCombo("Muses & Motifs")]
-    [CustomComboInfo("Landscape Muse/Motif Combo", "Replace Starry Sky Motif with Starry Muse when the Landscape Canvas is painted.", PCT.JobID)]
+    [CustomComboInfo("Starry Muse/Motif Combo", "Replace Starry Sky Motif with Starry Muse when the Landscape Canvas is painted.", PCT.JobID)]
     PictomancerLandscapeMotifCombo = 4210,
 
-    [IconsCombo([PCT.StarryMuse, UTL.ArrowLeft, PCT.StarPrism1, UTL.Blank, PCT.Buffs.StarPrismReady, UTL.Checkmark])]
+    [IconsCombo([PCT.StarryMuse, UTL.ArrowLeft, PCT.StarPrism, UTL.Blank, PCT.Buffs.StarPrismReady, UTL.Checkmark])]
     [SectionCombo("Muses & Motifs")]
-    [CustomComboInfo("Landscape Muse/Star Prism Combo", "Replace Starry Muse with Star Prism when it is usable.", PCT.JobID)]
+    [CustomComboInfo("Starry Muse/Star Prism Combo", "Replace Starry Muse with Star Prism when it is usable.  Also replaces Starry Sky Motif if the Starry Muse/Motif Combo is selected.", PCT.JobID)]
     PictomancerLandscapePrismCombo = 4211,
 
-    [IconsCombo([PCT.FireRed, UTL.ArrowLeft, PCT.StarryMuse, UTL.Blank, PCT.Buffs.StarPrismReady, UTL.Checkmark])]
+    [IconsCombo([PCT.FireRedST, UTL.ArrowLeft, PCT.StarryMuse, UTL.Blank, PCT.Buffs.StarPrismReady, UTL.Checkmark])]
     [SectionCombo("Muses & Motifs")]
     [AccessibilityCustomCombo]
     [CustomComboInfo("Star Prism Autocast", "Replace Fire in Red, Fire II in Red, Blizzard in Cyan, Blizzard II in Cyan, and their combo chains, with Star Prism when you have Star Prism Ready.", PCT.JobID)]
     PictomancerStarPrismAutoCombo = 4214,
 
-    [IconsCombo([PCT.HolyInWhite, UTL.ArrowLeft, PCT.CometBlack, UTL.Blank, PCT.CometBlack, UTL.Checkmark])]
+    [IconsCombo([PCT.HolyWhite, UTL.ArrowLeft, PCT.CometBlack, UTL.Blank, PCT.CometBlack, UTL.Checkmark])]
     [SectionCombo("Holy Comet")]
     [CustomComboInfo("Holy Comet Combo", "Replace Holy in White with Comet in Black when usable.", PCT.JobID)]
     PictomancerHolyCometCombo = 4203,
 
-    [IconsCombo([PCT.HolyInWhite, UTL.ArrowLeft, PCT.RainbowDrip, UTL.Blank, PCT.Buffs.RainbowReady, UTL.Checkmark])]
+    [IconsCombo([PCT.HolyWhite, UTL.ArrowLeft, PCT.RainbowDrip, UTL.Blank, PCT.Buffs.RainbowReady, UTL.Checkmark])]
     [SectionCombo("Holy Comet")]
     [ExpandedCustomCombo]
     [ParentCombo(PictomancerHolyCometCombo)]
     [CustomComboInfo("Rainbow Holy Combo", "Replace Holy in White with Rainbow Drip when under the effect of Rainbow Drip Ready (has priority over Comet in Black).", PCT.JobID)]
     PictomancerRainbowHolyCombo = 4215,
 
-    [IconsCombo([PCT.FireRed, PCT.BlizzardCyan, UTL.ArrowLeft, PCT.HolyInWhite, UTL.Blank, PCT.HolyInWhite, UTL.Danger])]
+    [IconsCombo([PCT.FireRedST, PCT.BlizzardCyanST, UTL.ArrowLeft, PCT.HolyWhite, UTL.Blank, PCT.HolyWhite, UTL.Danger])]
     [SectionCombo("Holy Comet")]
     [AccessibilityCustomCombo]
     [CustomComboInfo("Holy Autocast", "Replace Fire in Red, Fire II in Red, Blizzard in Cyan, Blizzard II in Cyan, and their combo chains, with Holy or Comet if the next cast would overcap the Paint Gauge.", PCT.JobID)]
     PictomancerHolyAutoCombo = 4204,
 
-    [IconsCombo([PCT.FireRed, UTL.ArrowLeft, PCT.RainbowDrip, UTL.Blank, PCT.Buffs.RainbowReady, UTL.Checkmark])]
+    [IconsCombo([PCT.FireRedST, UTL.ArrowLeft, PCT.RainbowDrip, UTL.Blank, PCT.Buffs.RainbowReady, UTL.Checkmark])]
     [SectionCombo("Rainbow Drip")]
     [AccessibilityCustomCombo]
     [CustomComboInfo("Rainbow Autocast", "Replace Fire in Red, Fire II in Red, Blizzard in Cyan, Blizzard II in Cyan, and their combo chains, with Rainbow Drip when you have Rainbow Drip Ready.", PCT.JobID)]
     PictomancerRainbowAutoCombo = 4213,
 
-    [IconsCombo([PCT.FireRed, UTL.ArrowLeft, PCT.RainbowDrip, UTL.Blank, PCT.RainbowDrip, UTL.OutOfBattle])]
+    [IconsCombo([PCT.FireRedST, UTL.ArrowLeft, PCT.RainbowDrip, UTL.Blank, PCT.RainbowDrip, UTL.OutOfBattle])]
     [SectionCombo("Rainbow Drip")]
     [SecretCustomCombo]
     [CustomComboInfo("Rainbow Drip Starter", "Replace Fire in Red & Fire in Red II with Rainbow Drip when out of combat.", PCT.JobID)]
