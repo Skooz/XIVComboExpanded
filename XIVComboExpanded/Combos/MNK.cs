@@ -146,7 +146,7 @@ internal class MonkRaptorCombo : CustomCombo
                     return OriginalHook(MNK.MasterfulBlitz);
             }
 
-            if (gauge.RaptorFury == 0 && level > MNK.Levels.TwinSnakes)
+            if (gauge.RaptorFury == 0 && level >= MNK.Levels.TwinSnakes)
                 return MNK.TwinSnakes;
         }
 
