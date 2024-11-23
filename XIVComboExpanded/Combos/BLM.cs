@@ -130,7 +130,7 @@ internal class BlackFireBlizzard4 : CustomCombo
                                     return BLM.Despair;
                                 if (HasEffect(BLM.Buffs.Firestarter)) // rare case usually caused by rotation error or clipping
                                     return BLM.Fire3;
-                                if (level > BLM.Levels.Paradox && gauge.IsParadoxActive) // typical use case
+                                if (level >= BLM.Levels.Paradox && gauge.IsParadoxActive) // typical use case
                                     return BLM.Paradox;
                                 if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp >= 800) // suboptimal despair usage, but still better than Blizzard3
                                     return BLM.Despair;
@@ -165,7 +165,7 @@ internal class BlackFireBlizzard4 : CustomCombo
                     if (IsEnabled(CustomComboPreset.BlackEnochianUmbralIceFeature) && gauge.UmbralIceStacks < 3)
                     {
                         if (level >= BLM.Levels.Blizzard3 && (HasEffect(BLM.Buffs.Swiftcast) || HasEffect(BLM.Buffs.Triplecast)))
-                            return BLM.Blizzard3; 
+                            return BLM.Blizzard3;
                         return OriginalHook(BLM.Blizzard);
                     }
 
