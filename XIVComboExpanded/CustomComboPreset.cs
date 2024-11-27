@@ -1536,7 +1536,7 @@ public enum CustomComboPreset
     [SectionCombo("Holy Comet")]
     [ExpandedCustomCombo]
     [ParentCombo(PictomancerHolyCometCombo)]
-    [CustomComboInfo("Rainbow Holy Combo", "Replace Holy in White with Rainbow Drip when under the effect of Rainbow Drip Ready (has priority over Comet in Black).", PCT.JobID)]
+    [CustomComboInfo("Rainbow Holy Combo", "Replace Holy in White with Rainbow Drip when under the effect of Rainbow Drip Ready (has priority over Comet in Black and Hammer Stamp, if applicable).", PCT.JobID)]
     PictomancerRainbowHolyCombo = 4215,
 
     [IconsCombo([PCT.FireRedST, PCT.BlizzardCyanST, UTL.ArrowLeft, PCT.HolyWhite, UTL.Blank, PCT.HolyWhite, UTL.Danger])]
@@ -1556,6 +1556,13 @@ public enum CustomComboPreset
     [SecretCustomCombo]
     [CustomComboInfo("Rainbow Drip Starter", "Replace Fire in Red & Fire in Red II with Rainbow Drip when out of combat.", PCT.JobID)]
     PictomancerRainbowStarter = 4216,
+
+    [IconsCombo([PCT.HolyWhite, UTL.ArrowLeft, PCT.HammerStamp, PCT.HammerBrush, PCT.PolishingHammer, UTL.Blank, PCT.Buffs.HammerReady, UTL.Checkmark])]
+    [SectionCombo("Holy Hammer")]
+    [ExpandedCustomCombo]
+    [ParentCombo(PictomancerHolyCometCombo)]
+    [CustomComboInfo("Holy Hammer Combo", "Replace Holy in White with Hammer Brush and its combo chain when they are usable (has priority over Comet in Black).", PCT.JobID)]
+    PictomancerHolyHammerCombo = 4217,
 
     #endregion
     // ====================================================================================

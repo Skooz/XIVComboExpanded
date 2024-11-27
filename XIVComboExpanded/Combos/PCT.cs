@@ -286,6 +286,11 @@ internal static class PCT
                     return PCT.RainbowDrip;
                 }
 
+                if (IsEnabled(CustomComboPreset.PictomancerHolyHammerCombo) && HasEffect(PCT.Buffs.HammerReady))
+                {
+                    return PCT.HammerStamp;
+                }
+
                 if (HasEffect(PCT.Buffs.MonochromeTones))
                     return PCT.CometBlack;
             }
