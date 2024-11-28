@@ -288,7 +288,7 @@ internal static class PCT
 
                 if (IsEnabled(CustomComboPreset.PictomancerHolyHammerCombo) && HasEffect(PCT.Buffs.HammerReady))
                 {
-                    return PCT.HammerStamp;
+                    return OriginalHook(PCT.HammerStamp);
                 }
 
                 if (HasEffect(PCT.Buffs.MonochromeTones))
