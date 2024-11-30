@@ -2082,24 +2082,24 @@ public enum CustomComboPreset
     [CustomComboInfo("Oka/Mangetsu Combo", "Replace Oka and Mangetsu with their combo chain.", SAM.JobID)]
     SamuraiAoECombo = 3404,
 
-    [IconsCombo([SAM.Oka, UTL.ArrowLeft, SAM.Fuga])]
+    [IconsCombo([SAM.Oka, SAM.Mangetsu, UTL.Blank, UTL.Blank2, UTL.Idea])]
     [SectionCombo("Area of Effect")]
     [AccessibilityCustomCombo]
-    [CustomComboInfo("Auto-AoE", "Replace Oka and Mengutsu with whichever one you don't have the Sen for yet.  If you have both or neither Sen, neither one will be replaced.", SAM.JobID)]
+    [CustomComboInfo("Auto-AoE", "Replace Oka and Mangetsu with whichever one you don't have the Sen for yet.  If you have both or neither Sen, neither one will be replaced.", SAM.JobID)]
     SamuraiAutoAoEFeature = 3423,
 
-    [IconsCombo([SAM.Oka, UTL.ArrowLeft, SAM.Fuga])]
+    [IconsCombo([SAM.Oka, SAM.Mangetsu, UTL.Blank, SAM.Buffs.Fugetsu, SAM.Buffs.Fuka])]
     [SectionCombo("Area of Effect")]
     [AccessibilityCustomCombo]
     [ParentCombo(SamuraiAutoAoEFeature)]
-    [CustomComboInfo("Auto-AoE Buff Upkeep", "Also replace Oka and Mangutsu with each other in order to upkeep the buffs they apply, provided you either have neither of the two Sen, or already have both.  When you have neither or both of the Sen, both Oka and Mangetsu will be replaced with whichever one grants the buff that currently has the shortest duration on you (or is currently absent).  If both buffs are absent, neither ability will be replaced", SAM.JobID)]
+    [CustomComboInfo("Auto-AoE Buff Upkeep", "Also replace Oka and Mangetsu with each other in order to upkeep the buffs they apply, provided you either have neither of the two Sen, or already have both.  When you have neither or both of the Sen, both Oka and Mangetsu will be replaced with whichever one grants the buff that currently has the shortest duration on you (or is currently absent).  If both buffs are absent, neither ability will be replaced", SAM.JobID)]
     SamuraiAutoAoEBuffFeature = 3424,
 
-    [IconsCombo([SAM.Oka, UTL.ArrowLeft, SAM.Fuga])]
+    [IconsCombo([SAM.Oka, SAM.Mangetsu, UTL.ArrowLeft, SAM.TenkaGoken, SAM.TendoGoken])]
     [SectionCombo("Area of Effect")]
     [AccessibilityCustomCombo]
     [ParentCombo(SamuraiAutoAoEFeature)]
-    [CustomComboInfo("Auto-AoE Goken Finale", "Also replace Oka and Mangutsu with Iaijutsu (Tenka Goken) when you have both Sen.  Obeys the 'Iaijutsu to Tsubame-gaeshi' feature as well: if that feature is enabled, this will also include the follow-up Kaeshi: Goken when available.", SAM.JobID)]
+    [CustomComboInfo("Auto-AoE Goken Finale", "Also replace Oka and Mangetsu with Iaijutsu (Tenka Goken) when you have both Sen.  Obeys the 'Iaijutsu to Tsubame-gaeshi' feature as well: if that feature is enabled, this will also include the follow-up Kaeshi: Goken when available.", SAM.JobID)]
     SamuraiAutoAoEFinaleFeature = 3425,
 
     [IconsCombo([SAM.Iaijutsu, UTL.ArrowLeft, SAM.TsubameGaeshi])]
