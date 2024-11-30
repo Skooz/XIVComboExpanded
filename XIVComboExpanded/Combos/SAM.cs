@@ -24,20 +24,23 @@ internal static class SAM
         Fuko = 25780,
         // Iaijutsu and Tsubame
         Iaijutsu = 7867,
-        TsubameGaeshi = 16483,
+        MidareSetsugekka = 7487,
+        TenkaGoken = 7488,
         Higanbana = 7489,
+        TsubameGaeshi = 16483,
         KaeshiGoken = 16485,
         KaeshiSetsugekka = 16486,
+        TendoGoken = 36965,
+        TendoSetsugekka = 36966,
         TendoKaeshiGoken = 36967,
         TendoKaeshiSetsugekka = 36968,
-        Shoha = 16487,
         // Misc
         HissatsuShinten = 7490,
         HissatsuKyuten = 7491,
         HissatsuSenei = 16481,
         HissatsuGuren = 7496,
         Ikishoten = 16482,
-        // Shoha2 = 25779,
+        Shoha = 16487,
         OgiNamikiri = 25781,
         KaeshiNamikiri = 25782,
         Zanshin = 36964;
@@ -47,8 +50,8 @@ internal static class SAM
         public const ushort
             MeikyoShisui = 1233,
             EyesOpen = 1252,
-            Jinpu = 1298,
-            Shifu = 1299,
+            Fugetsu = 1298, // From Jinpu and Mangetsu
+            Fuka = 1299,    // From Shifu and Oka
             OgiNamikiriReady = 2959,
             ZanshinReady = 3855;
     }
@@ -63,23 +66,32 @@ internal static class SAM
     {
         public const byte
             Jinpu = 4,
+            Enpi = 15,
             Shifu = 18,
+            Fuga = 26,
             Gekko = 30,
+            Higanbana = 30,
             Mangetsu = 35,
             Kasha = 40,
+            TenkaGoken = 40,
             Oka = 45,
             Yukikaze = 50,
             MeikyoShisui = 50,
+            MidareSetsugekka = 50,
+            HissatsuShinten = 52,
+            HissatsuGyoten = 54,
+            HissatsuYaten = 56,
             HissatsuKyuten = 64,
+            Ikishoten = 68,
             HissatsuGuren = 70,
             HissatsuSenei = 72,
             TsubameGaeshi = 74,
             Shoha = 80,
-            // Shoha2 = 82,
             Hyosetsu = 86,
             Fuko = 86,
             OgiNamikiri = 90,
-            Zanshin = 96;
+            Zanshin = 96,
+            Tendo = 100;
     }
 }
 
@@ -160,41 +172,58 @@ internal class SamuraiKasha : CustomCombo
 
 internal class SamuraiMangetsu : CustomCombo
 {
-    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiMangetsuCombo;
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiAoECombo;
 
     protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
     {
-        if (actionID == SAM.Mangetsu)
-            {
-                if (level >= SAM.Levels.MeikyoShisui && HasEffect(SAM.Buffs.MeikyoShisui))
-                    return SAM.Mangetsu;
-
-                if ((lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko) && level >= SAM.Levels.Mangetsu)
-                    return SAM.Mangetsu;
-
-                // Fuko
-                return OriginalHook(SAM.Fuga);
-        }
-
-        return actionID;
-    }
-}
-
-internal class SamuraiOka : CustomCombo
-{
-    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiOkaCombo;
-
-    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-    {
-        if (actionID == SAM.Oka)
+        if (actionID == SAM.Mangetsu || actionID == SAM.Oka)
         {
-            if (level >= SAM.Levels.MeikyoShisui && HasEffect(SAM.Buffs.MeikyoShisui))
-                return SAM.Oka;
+            if (level >= SAM.Levels.Mangetsu && level < SAM.Levels.Oka)
+                return SAM.Mangetsu;
 
-            if ((lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko) && level >= SAM.Levels.Oka)
-                return SAM.Oka;
+            if (level > SAM.Levels.Fuga && level < SAM.Levels.Mangetsu)
+                return SAM.Fuga;
 
-            // Fuko
+            var iaijutsu = OriginalHook(SAM.Iaijutsu);
+            var tsubame = OriginalHook(SAM.TsubameGaeshi);
+
+            if (level >= SAM.Levels.TsubameGaeshi && IsEnabled(CustomComboPreset.SamuraiAutoAoEFinaleFeature) &&
+                IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) &&
+                (tsubame == SAM.KaeshiGoken || tsubame == SAM.TendoKaeshiGoken))
+                return tsubame;
+
+            if (level >= SAM.Levels.TenkaGoken && IsEnabled(CustomComboPreset.SamuraiAutoAoEFinaleFeature) &&
+                (iaijutsu == SAM.TenkaGoken || iaijutsu == SAM.TendoGoken))
+                return iaijutsu;
+
+            var gauge = GetJobGauge<SAMGauge>();
+            var fuka = FindEffect(SAM.Buffs.Fuka);
+            var fukaTime = fuka != null ? fuka.RemainingTime : 0;
+            var fugetsu = FindEffect(SAM.Buffs.Fugetsu);
+            var fugetsuTime = fugetsu != null ? fugetsu.RemainingTime : 0;
+
+            if ((level >= SAM.Levels.Oka && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko)) ||
+                (level >= SAM.Levels.MeikyoShisui && HasEffect(SAM.Buffs.MeikyoShisui)))
+            {
+                if (IsEnabled(CustomComboPreset.SamuraiAutoAoEFeature) && actionID == SAM.Mangetsu &&
+                    gauge.HasGetsu && !gauge.HasKa)
+                    return SAM.Oka;
+
+                if (IsEnabled(CustomComboPreset.SamuraiAutoAoEFeature) && actionID == SAM.Oka &&
+                    !gauge.HasGetsu && gauge.HasKa)
+                    return SAM.Mangetsu;
+
+                if (IsEnabled(CustomComboPreset.SamuraiAutoAoEBuffFeature) && actionID == SAM.Mangetsu &&
+                    (gauge.HasGetsu == gauge.HasKa) && fukaTime < fugetsuTime)
+                    return SAM.Oka;
+
+                if (IsEnabled(CustomComboPreset.SamuraiAutoAoEBuffFeature) && actionID == SAM.Oka &&
+                    (gauge.HasGetsu == gauge.HasKa) && fugetsuTime < fukaTime)
+                    return SAM.Mangetsu;
+
+                return actionID;
+            }
+
             return OriginalHook(SAM.Fuga);
         }
 
