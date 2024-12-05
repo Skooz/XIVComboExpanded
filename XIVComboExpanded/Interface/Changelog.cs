@@ -13,6 +13,19 @@ namespace XIVComboExpanded.Interface
             return new Dictionary<string, string[]>()
                 {
                     {
+                        "v2.0.1.2",
+                        [
+                            "Added NIN's Bhavacakra to Hellfrog Level Sync feature.",
+                            "Added PCT's  Holy Hammer combo feature by @Propagandist1.",
+                            "Added PCT's Starry Muse/Star Prism Combo by @kaedys.",
+                            "Fixed level checks for BLM, MNK, SAM and RPR by @kaedys.",
+                            "Fixed NIN's Forked Raiju features.",
+                            "Removed PCT's deprecated (and now useless) Landscape Muse/Star Prism Combo.",
+                            "Reworked VPR's Vice combo oGCD by @kaedys.",
+                            "Updated BLM things and stuff for Enochian Timer Feature by @lhn1703."
+                        ]
+                    },
+                    {
                         "v2.0.1.1",
                         [
                             "Added BLM's Enochian Umbral Ice Feature by @lhn1703.",
