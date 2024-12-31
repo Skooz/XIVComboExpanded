@@ -1400,6 +1400,12 @@ public enum CustomComboPreset
     [CustomComboInfo("Royal Authority Divine Might Feature", "Replace Royal Authority with Holy Spirit when Divine Might is active.", PLD.JobID)]
     PaladinRoyalAuthorityDivineMightFeature = 1912,
 
+    [IconsCombo([PLD.ShieldLob, UTL.ArrowLeft, PLD.HolySpirit, UTL.Blank, PLD.Buffs.DivineMight, UTL.Checkmark])]
+    [SectionCombo("Single Target")]
+    [AccessibilityCustomCombo]
+    [CustomComboInfo("Shield Lob to Holy Spirit", "Replace Shield Lob with Holy Spirit when Divine Might is active and you can use it.", PLD.JobID)]
+    PaladinShieldLobDivineMightFeature = 1925,
+
     [IconsCombo([PLD.Prominence, UTL.ArrowLeft, PLD.TotalEclipse])]
     [SectionCombo("Area of Effect")]
     [CustomComboInfo("Prominence Combo", "Replace Prominence with its combo chain.", PLD.JobID)]
@@ -2034,31 +2040,31 @@ public enum CustomComboPreset
     [CustomComboInfo("Soteria Kardia Feature", "Replace Soteria with Kardia when off cooldown and missing Kardion.", SGE.JobID)]
     SageSoteriaKardionFeature = 4006,
 
-	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Dosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
-	[SectionCombo("Eukrasia")]
-	[AccessibilityCustomCombo]
-	[CustomComboInfo("Eukrasian Dosis", "Replace Eukrasia with Dosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
-	SageEukrasianDosisFeature = 4020,
+    [IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Dosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+    [SectionCombo("Eukrasia")]
+    [AccessibilityCustomCombo]
+    [CustomComboInfo("Eukrasian Dosis", "Replace Eukrasia with Dosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+    SageEukrasianDosisFeature = 4020,
 
-	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Diagnosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
-	[SectionCombo("Eukrasia")]
-	[AccessibilityCustomCombo]
-	[CustomComboInfo("Eukrasian Diagnosis", "Replace Eukrasia with Diagnosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
-	SageEukrasianDiagnosisFeature = 4017,
+    [IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Diagnosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+    [SectionCombo("Eukrasia")]
+    [AccessibilityCustomCombo]
+    [CustomComboInfo("Eukrasian Diagnosis", "Replace Eukrasia with Diagnosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+    SageEukrasianDiagnosisFeature = 4017,
 
-	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Prognosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
-	[SectionCombo("Eukrasia")]
-	[AccessibilityCustomCombo]
-	[CustomComboInfo("Eukrasian Prognosis", "Replace Eukrasia with Prognosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
-	SageEukrasianPrognosisFeature = 4018,
+    [IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Prognosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+    [SectionCombo("Eukrasia")]
+    [AccessibilityCustomCombo]
+    [CustomComboInfo("Eukrasian Prognosis", "Replace Eukrasia with Prognosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+    SageEukrasianPrognosisFeature = 4018,
 
-	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Dyskrasia, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
-	[SectionCombo("Eukrasia")]
-	[AccessibilityCustomCombo]
-	[CustomComboInfo("Eukrasian Dyskrasia", "Replace Eukrasia with Dyskrasia when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
-	SageEukrasianDyskrasiaFeature = 4019,
+    [IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Dyskrasia, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+    [SectionCombo("Eukrasia")]
+    [AccessibilityCustomCombo]
+    [CustomComboInfo("Eukrasian Dyskrasia", "Replace Eukrasia with Dyskrasia when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+    SageEukrasianDyskrasiaFeature = 4019,
 
-	[IconsCombo([SGE.Druochole, UTL.ArrowLeft, SGE.Taurochole, UTL.Blank, SGE.Druochole, UTL.Checkmark])]
+    [IconsCombo([SGE.Druochole, UTL.ArrowLeft, SGE.Taurochole, UTL.Blank, SGE.Druochole, UTL.Checkmark])]
     [SectionCombo("Addersgall")]
     [ExpandedCustomCombo]
     [CustomComboInfo("Druochole into Taurochole Feature", "Replace Druochole with Taurochole when off cooldown.\nWarning: This will limit your abiility to use Druochole.", SGE.JobID)]

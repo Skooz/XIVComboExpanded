@@ -226,26 +226,26 @@ internal class SageEukrasia : CustomCombo
         {
             if(HasEffect(SGE.Buffs.Eukrasia))
             {
-				if (IsEnabled(CustomComboPreset.SageEukrasianDosisFeature))
-				{
-                    return OriginalHook(SGE.EukrasianDosis);
-				}
+                if (IsEnabled(CustomComboPreset.SageEukrasianDosisFeature))
+                {
+                    return OriginalHook(SGE.Dosis);
+                }
 
-				if (IsEnabled(CustomComboPreset.SageEukrasianDiagnosisFeature))
-				{
-                    return OriginalHook(SGE.EukrasianDiagnosis);
-				}
-				if (IsEnabled(CustomComboPreset.SageEukrasianPrognosisFeature))
-				{
-				    return OriginalHook(SGE.EukrasianPrognosis);
-				}
+                if (IsEnabled(CustomComboPreset.SageEukrasianDiagnosisFeature))
+                {
+                    return OriginalHook(SGE.Diagnosis);
+                }
+                if (IsEnabled(CustomComboPreset.SageEukrasianPrognosisFeature))
+                {
+                    return OriginalHook(SGE.Prognosis);
+                }
 
-				if (IsEnabled(CustomComboPreset.SageEukrasianDyskrasiaFeature))
-				{
-					if (level >= SGE.Levels.Dyskrasia)
-						return OriginalHook(SGE.EukrasianDyskrasia);
-				}
-			}
+                if (IsEnabled(CustomComboPreset.SageEukrasianDyskrasiaFeature))
+                {
+                    if (level >= SGE.Levels.Dyskrasia)
+                        return OriginalHook(SGE.Dyskrasia);
+                }
+            }
 
             
         }

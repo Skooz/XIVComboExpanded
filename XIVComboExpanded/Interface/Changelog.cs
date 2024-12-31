@@ -13,6 +13,14 @@ namespace XIVComboExpanded.Interface
             return new Dictionary<string, string[]>()
                 {
                     {
+                        "v2.0.1.4",
+                        [
+                            "Fixed SGE's Eukrasian Prognosis feature.",
+                            "Added PLD's Shield Lob to Holy Spirit feature.",
+                            "Sorry New Year!"
+                        ]
+                    },
+                    {
                         "v2.0.1.3",
                         [
                             "Added AST's Gravity-only to Arcana feature.",

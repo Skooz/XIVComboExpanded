@@ -375,6 +375,22 @@ internal class PaladinHolySpirit : PaladinCombo
     }
 }
 
+internal class PaladinShieldLobHolySpirit : PaladinCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PaladinShieldLobDivineMightFeature;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PLD.ShieldLob
+            && level >= PLD.Levels.HolySpirit
+            && this.HasMp(PLD.HolySpirit)
+            && HasEffect(PLD.Buffs.DivineMight))
+                return PLD.HolySpirit;
+
+        return actionID;
+    }
+}
+
 internal class PaladinRequiescat : PaladinCombo
 {
     protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PldAny;
