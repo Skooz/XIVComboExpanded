@@ -200,10 +200,17 @@ public enum CustomComboPreset
     AstrologianHeliosArcanaFeature = 3324,
 
     [SectionCombo("Minor Arcanas")]
-    [IconsCombo([AST.Malefic, UTL.ArrowLeft, AST.LordOfCrowns])]
+    [IconsCombo([AST.Malefic, AST.Gravity, UTL.ArrowLeft, AST.LordOfCrowns])]
     [ExpandedCustomCombo]
     [CustomComboInfo("Malefic/Gravity to Arcana", "Replace Malefic & Gravity by Lord of Crowns when drawn.", AST.JobID)]
     AstrologianMaleficArcanaFeature = 3325,
+
+    [SectionCombo("Minor Arcanas")]
+    [IconsCombo([AST.Gravity, UTL.ArrowLeft, AST.LordOfCrowns])]
+    [ExpandedCustomCombo]
+    [ParentCombo(AstrologianMaleficArcanaFeature)]
+    [CustomComboInfo("Gravity-only to Arcana", "Only replace Gravity by Lord of Crowns when drawn.", AST.JobID)]
+    AstrologianGravityOnlyArcanaFeature = 3328,
 
     [SectionCombo("Level Synchronization")]
     [IconsCombo([AST.Benefic, UTL.ArrowLeft, AST.Benefic2])]
@@ -653,6 +660,20 @@ public enum CustomComboPreset
     //[CustomComboInfo("Devilment Feature", "Replace Devilment with Starfall Dance when active.", DNC.JobID)]
     //DancerDevilmentFeature = 3807,
 
+    [IconsCombo([DNC.StandardStep, DNC.TechnicalStep, UTL.ArrowLeft, DNC.Emboite, UTL.Cycle, DNC.Entrechat, UTL.Cycle, DNC.Jete, UTL.Cycle, DNC.Pirouette])]
+    [SectionCombo("Dances features")]
+    [ConflictingCombos(DancerDanceComboCompatibility)]
+    [AccessibilityCustomCombo]
+    [CustomComboInfo("Dance Step Combo", "Replace Standard Step and Technical Step with each dance step while dancing.", DNC.JobID)]
+    DancerDanceStepCombo = 3802,
+
+    [IconsCombo([DNC.StandardStep, UTL.Plus, DNC.TechnicalStep])]
+    [SectionCombo("Dances features")]
+    [SecretCustomCombo]
+    [ParentCombo(DancerDanceStepCombo)]
+    [CustomComboInfo("Combined Steps", "Puts the dance step on both buttons.\nPlease be careful as it will hide the other dance's cooldown while you're dancing.", DNC.JobID)]
+    DancerCombinedStandardStepTechnicalStep = 3830,
+
     [IconsCombo([DNC.StandardStep, UTL.ArrowLeft, DNC.LastDance, UTL.Blank, DNC.Buffs.LastDanceReady, UTL.Checkmark])]
     [SectionCombo("Dances features")]
     [CustomComboInfo("Last Dance Feature", "Replace Standard Step by Last Dance if available.", DNC.JobID)]
@@ -664,13 +685,6 @@ public enum CustomComboPreset
     [ParentCombo(DancerLastDanceFeature)]
     [CustomComboInfo("Finishing Move Priority", "Priorize Finishing Move over Last Dance when replacing Standard Step.\n\nNOTE: This is strongly discouraged, as Finishing Move will overwrite and waste the Last Dance buff.", DNC.JobID)]
     DancerFinishingMovePriorityFeature = 3814,
-
-    [IconsCombo([DNC.StandardStep, DNC.TechnicalStep, UTL.ArrowLeft, DNC.Emboite, UTL.Cycle, DNC.Entrechat, UTL.Cycle, DNC.Jete, UTL.Cycle, DNC.Pirouette])]
-    [SectionCombo("Dances features")]
-    [ConflictingCombos(DancerDanceComboCompatibility)]
-    [AccessibilityCustomCombo]
-    [CustomComboInfo("Dance Step Combo", "Replace Standard Step and Technical Step with each dance step while dancing.", DNC.JobID)]
-    DancerDanceStepCombo = 3802,
 
     [IconsCombo([DNC.Emboite, DNC.Entrechat, DNC.Jete, DNC.Pirouette])]
     [SectionCombo("Dances features")]
@@ -2020,7 +2034,31 @@ public enum CustomComboPreset
     [CustomComboInfo("Soteria Kardia Feature", "Replace Soteria with Kardia when off cooldown and missing Kardion.", SGE.JobID)]
     SageSoteriaKardionFeature = 4006,
 
-    [IconsCombo([SGE.Druochole, UTL.ArrowLeft, SGE.Taurochole, UTL.Blank, SGE.Druochole, UTL.Checkmark])]
+	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Dosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+	[SectionCombo("Eukrasia")]
+	[AccessibilityCustomCombo]
+	[CustomComboInfo("Eukrasian Dosis", "Replace Eukrasia with Dosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+	SageEukrasianDosisFeature = 4020,
+
+	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Diagnosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+	[SectionCombo("Eukrasia")]
+	[AccessibilityCustomCombo]
+	[CustomComboInfo("Eukrasian Diagnosis", "Replace Eukrasia with Diagnosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+	SageEukrasianDiagnosisFeature = 4017,
+
+	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Prognosis, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+	[SectionCombo("Eukrasia")]
+	[AccessibilityCustomCombo]
+	[CustomComboInfo("Eukrasian Prognosis", "Replace Eukrasia with Prognosis when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+	SageEukrasianPrognosisFeature = 4018,
+
+	[IconsCombo([SGE.Eukrasia, UTL.ArrowLeft, SGE.Dyskrasia, UTL.Blank, SGE.Buffs.Eukrasia, UTL.Checkmark])]
+	[SectionCombo("Eukrasia")]
+	[AccessibilityCustomCombo]
+	[CustomComboInfo("Eukrasian Dyskrasia", "Replace Eukrasia with Dyskrasia when Eukrasia is active. Conflicts with the other Eukrasian options.", SGE.JobID)]
+	SageEukrasianDyskrasiaFeature = 4019,
+
+	[IconsCombo([SGE.Druochole, UTL.ArrowLeft, SGE.Taurochole, UTL.Blank, SGE.Druochole, UTL.Checkmark])]
     [SectionCombo("Addersgall")]
     [ExpandedCustomCombo]
     [CustomComboInfo("Druochole into Taurochole Feature", "Replace Druochole with Taurochole when off cooldown.\nWarning: This will limit your abiility to use Druochole.", SGE.JobID)]
@@ -2089,15 +2127,20 @@ public enum CustomComboPreset
     [CustomComboInfo("Kasha Combo Option", "Start the Kasha combo chain with Shifu instead of Hakaze.", SAM.JobID)]
     SamuraiKashaOption = 3417,
 
-    [IconsCombo([SAM.Mangetsu, SAM.Oka, UTL.ArrowLeft, SAM.Fuga, SAM.Fuko])]
+    [IconsCombo([SAM.Mangetsu, UTL.ArrowLeft, SAM.Fuga, SAM.Fuko])]
     [SectionCombo("Area of Effect")]
-    [CustomComboInfo("Oka/Mangetsu Combo", "Replace Oka and Mangetsu with their combo chain.", SAM.JobID)]
-    SamuraiAoECombo = 3404,
+    [CustomComboInfo("Mangetsu Combo", "Replace Mangetsu with its own combo chain.", SAM.JobID)]
+    SamuraiMangetsuCombo = 3404,
+
+    [IconsCombo([SAM.Oka, UTL.ArrowLeft, SAM.Fuga, SAM.Fuko])]
+    [SectionCombo("Area of Effect")]
+    [CustomComboInfo("Oka Combo", "Replace Oka with its own combo chain.", SAM.JobID)]
+    SamuraiOkaCombo = 3405,
 
     [IconsCombo([SAM.Oka, SAM.Mangetsu, UTL.Blank, UTL.Blank2, UTL.Idea])]
     [SectionCombo("Area of Effect")]
     [AccessibilityCustomCombo]
-    [CustomComboInfo("Auto-AoE", "Replace Oka and Mangetsu with whichever one you don't have the Sen for yet.  If you have both or neither Sen, neither one will be replaced.", SAM.JobID)]
+    [CustomComboInfo("Auto-AoE", "Condense both Oka and Mangetsu with whichever one you don't have the Sen for yet.  If you have both or neither Sen, neither one will be replaced.", SAM.JobID)]
     SamuraiAutoAoEFeature = 3423,
 
     [IconsCombo([SAM.Oka, SAM.Mangetsu, UTL.Blank, SAM.Buffs.Fugetsu, SAM.Buffs.Fuka])]
@@ -2110,8 +2153,7 @@ public enum CustomComboPreset
     [IconsCombo([SAM.Oka, SAM.Mangetsu, UTL.ArrowLeft, SAM.TenkaGoken, SAM.TendoGoken])]
     [SectionCombo("Area of Effect")]
     [AccessibilityCustomCombo]
-    [ParentCombo(SamuraiAutoAoEFeature)]
-    [CustomComboInfo("Auto-AoE Goken Finale", "Also replace Oka and Mangetsu with Iaijutsu (Tenka Goken) when you have both Sen.  Obeys the 'Iaijutsu to Tsubame-gaeshi' feature as well: if that feature is enabled, this will also include the follow-up Kaeshi: Goken when available.", SAM.JobID)]
+    [CustomComboInfo("AoE Goken Finale", "Replace Oka and Mangetsu with Iaijutsu (Tenka Goken) when you have both Sen. Obeys the 'Iaijutsu to Tsubame-gaeshi' feature as well: if that feature is enabled, this will also include the follow-up Kaeshi: Goken when available.", SAM.JobID)]
     SamuraiAutoAoEFinaleFeature = 3425,
 
     [IconsCombo([SAM.Iaijutsu, UTL.ArrowLeft, SAM.TsubameGaeshi])]

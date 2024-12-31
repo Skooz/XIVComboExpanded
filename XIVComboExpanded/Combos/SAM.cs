@@ -170,9 +170,9 @@ internal class SamuraiKasha : CustomCombo
     }
 }
 
-internal class SamuraiMangetsu : CustomCombo
+internal class SamuraiAutoAoE : CustomCombo
 {
-    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiAoECombo;
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiAutoAoEFeature;
 
     protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
     {
@@ -224,6 +224,79 @@ internal class SamuraiMangetsu : CustomCombo
                 return actionID;
             }
 
+            return OriginalHook(SAM.Fuga);
+        }
+
+        return actionID;
+    }
+}
+
+internal class SamuraiAoEGoken : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiAutoAoEFinaleFeature;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == SAM.Mangetsu || actionID == SAM.Oka)
+        {
+            if (level >= SAM.Levels.Mangetsu && level < SAM.Levels.Oka)
+                return SAM.Mangetsu;
+
+            if (level > SAM.Levels.Fuga && level < SAM.Levels.Mangetsu)
+                return SAM.Fuga;
+
+            var iaijutsu = OriginalHook(SAM.Iaijutsu);
+            var tsubame = OriginalHook(SAM.TsubameGaeshi);
+
+            if (level >= SAM.Levels.TsubameGaeshi && IsEnabled(CustomComboPreset.SamuraiAutoAoEFinaleFeature) &&
+                IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) &&
+                (tsubame == SAM.KaeshiGoken || tsubame == SAM.TendoKaeshiGoken))
+                return tsubame;
+
+            if (level >= SAM.Levels.TenkaGoken && IsEnabled(CustomComboPreset.SamuraiAutoAoEFinaleFeature) &&
+                (iaijutsu == SAM.TenkaGoken || iaijutsu == SAM.TendoGoken))
+                return iaijutsu;
+        }
+
+        return actionID;
+    }
+}
+
+internal class SamuraiMangetsu : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiMangetsuCombo;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == SAM.Mangetsu)
+        {
+            if (level >= SAM.Levels.MeikyoShisui && HasEffect(SAM.Buffs.MeikyoShisui))
+                return SAM.Mangetsu;
+            if ((lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko) && level >= SAM.Levels.Mangetsu)
+                return SAM.Mangetsu;
+
+            // Fuko/Fuga
+            return OriginalHook(SAM.Fuga);
+        }
+
+        return actionID;
+    }
+}
+
+internal class SamuraiOka : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SamuraiOkaCombo;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == SAM.Oka)
+        {
+            if (level >= SAM.Levels.MeikyoShisui && HasEffect(SAM.Buffs.MeikyoShisui))
+                return SAM.Oka;
+            if ((lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko) && level >= SAM.Levels.Oka)
+                return SAM.Oka;
+
+            // Fuko/Fuga
             return OriginalHook(SAM.Fuga);
         }
 

@@ -106,7 +106,7 @@ internal class AstrologianMalefic : CustomCombo
                     return OriginalHook(AST.Combust);
             }
 
-            if (IsEnabled(CustomComboPreset.AstrologianMaleficArcanaFeature) && gauge.DrawnCrownCard == CardType.LORD && level >= AST.Levels.MinorArcana)
+            if (IsEnabled(CustomComboPreset.AstrologianMaleficArcanaFeature) && !IsEnabled(CustomComboPreset.AstrologianGravityOnlyArcanaFeature) && gauge.DrawnCrownCard == CardType.LORD && level >= AST.Levels.MinorArcana)
                 return OriginalHook(AST.MinorArcanaDT);
 
             if (IsEnabled(CustomComboPreset.AstrologianDraw1Feature) && IsOriginal(AST.Play1) && (IsCooldownUsable(AST.AstralDraw) || IsCooldownUsable(AST.UmbralDraw)))

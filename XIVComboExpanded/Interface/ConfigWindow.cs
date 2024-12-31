@@ -129,10 +129,7 @@ public class ConfigWindow : Window
 
                                     foreach (var jobName in this.groupedPresets.Keys)
                                     {
-                                        if ((jobName is "Adventurer" or "Disciples of the Land" or "Sage") && !Service.Configuration.EnableExpandedCombos)
-                                        {
-                                        }
-                                        else
+                                        if (jobName is not "Adventurer" and not "Disciples of the Land" and not "Sage" || Service.Configuration.EnableExpandedCombos)
                                         {
                                             ImGui.TableNextRow();
                                             ImGui.TableNextColumn();
@@ -144,7 +141,6 @@ public class ConfigWindow : Window
                                             using (ImRaii.PushStyle(ImGuiStyleVar.FramePadding, new System.Numerics.Vector2(4f, 3f)))
                                             using (ImRaii.PushStyle(ImGuiStyleVar.FrameBorderSize, 0))
                                             {
-
                                                 ISharedImmediateTexture image = GetJobIcon(CustomComboInfoAttribute.NameToJobID(jobName));
 
                                                 if (image != null)
@@ -466,6 +462,7 @@ public class ConfigWindow : Window
                                     {
                                         ImGui.Text($"Secret Combos");
                                     }
+
                                     ImGui.Separator();
 
                                     ImGui.BulletText("Those combos are optimization routes which give little benefits.");

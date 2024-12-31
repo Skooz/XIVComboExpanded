@@ -1,4 +1,5 @@
 ﻿using Dalamud.Game.ClientState.JobGauge.Types;
+using System;
 
 namespace XIVComboExpandedPlugin.Combos;
 
@@ -17,6 +18,8 @@ internal static class SGE
         Physis = 24288,
         Phlegma = 24289,
         Eukrasia = 24290,
+        EukrasianDiagnosis = 24291,
+        EukrasianPrognosis = 24292,
         Soteria = 24294,
         Druochole = 24296,
         Dyskrasia = 24297,
@@ -33,9 +36,12 @@ internal static class SGE
         Holos = 24310,
         Panhaima = 24311,
         Phlegma3 = 24313,
+        EukrasianDosis = 24314,
         Dyskrasia2 = 24315,
         Krasis = 24317,
         Pneuma = 24318,
+        EukrasianDyskrasia = 37032,
+        EukrasianPrognosis2 = 37034,
         Psyche = 37033;
 
     public static class Buffs
@@ -76,9 +82,12 @@ internal static class SGE
             Panhaima = 80,
             Phlegma3 = 82,
             Dosis3 = 82,
+            Dyskrasia2 = 82,
+            Toxikon2 = 82,
             Krasis = 86,
             Pneuma = 90,
-            Psyche = 92;
+            Psyche = 92,
+            Philosophia = 100;
     }
 }
 
@@ -201,6 +210,44 @@ internal class SageTaurochole : CustomCombo
 
                 return SGE.Druochole;
             }
+        }
+
+        return actionID;
+    }
+}
+
+internal class SageEukrasia : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SgeAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == SGE.Eukrasia)
+        {
+            if(HasEffect(SGE.Buffs.Eukrasia))
+            {
+				if (IsEnabled(CustomComboPreset.SageEukrasianDosisFeature))
+				{
+                    return OriginalHook(SGE.EukrasianDosis);
+				}
+
+				if (IsEnabled(CustomComboPreset.SageEukrasianDiagnosisFeature))
+				{
+                    return OriginalHook(SGE.EukrasianDiagnosis);
+				}
+				if (IsEnabled(CustomComboPreset.SageEukrasianPrognosisFeature))
+				{
+				    return OriginalHook(SGE.EukrasianPrognosis);
+				}
+
+				if (IsEnabled(CustomComboPreset.SageEukrasianDyskrasiaFeature))
+				{
+					if (level >= SGE.Levels.Dyskrasia)
+						return OriginalHook(SGE.EukrasianDyskrasia);
+				}
+			}
+
+            
         }
 
         return actionID;

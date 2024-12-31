@@ -13,11 +13,26 @@ namespace XIVComboExpanded.Interface
             return new Dictionary<string, string[]>()
                 {
                     {
+                        "v2.0.1.3",
+                        [
+                            "Added AST's Gravity-only to Arcana feature.",
+                            "Added DNC's Combined Steps secret feature.",
+                            "Fixed MNK's Steeled Meditation when below level 54.",
+                            "Added SAM's Hissatsu: Guren features by @propagandist1.",
+                            "Added SGE's Eukrasian Dosis/Diagnosis/Prognosis/Dyskria features.",
+                            "Added SMN's Primal Favor Feature by @kaedys.",
+                            "Re-added SAM's Oka Combo as a separate option.",
+                            "Revised DRG's Stardiver to Nastrond and Dragonfire Dive by @kaedys.",
+                            "Happy New Year!"
+                        ]
+                    },
+                    {
                         "v2.0.1.2",
                         [
                             "Added NIN's Bhavacakra to Hellfrog Level Sync feature.",
                             "Added PCT's  Holy Hammer combo feature by @Propagandist1.",
                             "Added PCT's Starry Muse/Star Prism Combo by @kaedys.",
+                            "Added SAM's AoE Features by @kaedys",
                             "Fixed level checks for BLM, MNK, SAM and RPR by @kaedys.",
                             "Fixed NIN's Forked Raiju features.",
                             "Removed PCT's deprecated (and now useless) Landscape Muse/Star Prism Combo.",

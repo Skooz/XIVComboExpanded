@@ -105,7 +105,7 @@ internal class MonkOpoCombo : CustomCombo
             if (IsEnabled(CustomComboPreset.MonkBootshineMeditationFeature))
             {
                 if (level >= MNK.Levels.SteeledMeditation && gauge.Chakra < 5 && !InCombat())
-                    return MNK.SteeledMeditation;
+                    return OriginalHook(MNK.SteeledMeditation);
             }
 
             if (IsEnabled(CustomComboPreset.MonkBootshineFormShiftFeature))
@@ -231,7 +231,7 @@ internal class MonkMonkeyMode : CustomCombo
             if (IsEnabled(CustomComboPreset.MonkMonkeyMeditationFeature))
             {
                 if (level >= MNK.Levels.SteeledMeditation && gauge.Chakra < 5 && !InCombat())
-                    return MNK.SteeledMeditation;
+                    return OriginalHook(MNK.SteeledMeditation);
             }
 
             if (IsEnabled(CustomComboPreset.MonkMonkeyFormShiftFeature))
@@ -275,7 +275,7 @@ internal class MonkAoECombo : CustomCombo
             if (IsEnabled(CustomComboPreset.MonkAoEMeditationFeature))
             {
                 if (level >= MNK.Levels.EnlightenedMeditation && gauge.Chakra < 5 && !InCombat())
-                    return MNK.EnlightenedMeditation;
+                    return OriginalHook(MNK.EnlightenedMeditation);
             }
 
             if (IsEnabled(CustomComboPreset.MonkAoEFormShiftFeature))
