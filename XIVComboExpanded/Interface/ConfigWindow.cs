@@ -26,23 +26,24 @@ namespace XIVComboExpandedPlugin.Interface;
 public class ConfigWindow : Window
 {
     StyleModel currentStyle;
-    //     Code to be executed before conditionals are applied and the window is drawn.
-    public override void PreDraw()
+    StyleModel pluginStyle = StyleModel.Deserialize("DS1H4sIAAAAAAAACq1YWXPTMBD+K4yfO4xlWT76RhugzFCmQ8twvCmJmpi4cXCccHT631lLWl1xStqQF1vSfp/20nqV+4hHp+RlfBKNo9P76Et0WvSDr/L5cBJNYDXuZ6ZaTGixWIvFLxmI3cLqSTTT03MtW+kxH+uJ7xqcajCVeyz0RK2l7gJNUim1DLBqtglmEzm72lGyn/0By3KDFjaSL2st0qGVG6nTSbTVjD/185dW7bchZo71fwa341xPU8/aSQN23kc34len14lel89v+vlZPkG+FxxVaz6uxXR3dwmQTwP4XC2nzc+zmREmZUJYVuQaQ4oioYxqpF00BOfzqp46eGOUhijtlJFXzWqzcmULFC5QutDiZQryZ007Fa0Rz7M0j1mpMRlLyzjRuJShnkYxBb6ec7DvIO3etPxOuJ5gSZkSgjoS2I6UGUFXmFWzoya4aLaiddyfgdKgHUbBDiWPHYY8ryZdtbUniMoNE81ClTZov1m0mVB1tWvN8+CBDkTanJvkSNwY2MWQ5bypa75aOz55KtGlWG7OeOtGJzVxQVjqAK4nLWw69iCPBd/Iv237AjTsNBzt8ZnHEWaBCjMqbUaSyoyGqcIgmET86ifiN3/VOaJisrjk7cJQlPIoZZrBjCRBweKyiD1l6gpOkucYhob0L6qoDCMC3TOMeP+i8989s5uua5bPzVmFPs7xiuO4o3chuFu2WEFzEqcUPQbDOEVvm5HMREoMPDRjuIhDuAwidDV6Gh3txkeseMu7pn32gTQMoZ6U5j0WfaV+6G+zuMtzZKX5KNbVH/G2rVbP/FxYgtCipx0WyxNY9DR1bvZXoX+W7mOLDxAcW/f5+NPytpls3Jpvc2E4NXAo05r0fqVlEpAFejEv2ZAqyeQPWwkie5aMAtWomSyq5eyqFdtK2K6A5TGhDK1Lc5bmGUaYwCjJqDmhRUoJzR2y13er7rfzlcE4oXvc0FzVTfe+Woq1PaVYxk1j4ZVuA/Ajik0gKIutGWUB7KJad80MWgmbyBh/7/s3gNi3GfrE6zj7XlMVoCO6SMmiO7aubZb/hel9NZt3xxF99HrjxxoIK/6q/levDohMN+vXohaTTrgddIKlpi8Wcp8SU5n2F4hRy2ejtlnd8HYm9m1llSsB8oFvL8AZteeQvfso+wGjLgeQ4yF4v2F5gBxVd45p2Etjs4J29cf8spnyWuEOA4Ez+pse9MrRaTSC9ubFp3cR3D3VlYnvZK/vGGWkLbJ5cDjcVIB77QFSh124xEH3uFtrfW7sz40H+jcjO9uxNI8xoi7nfCePs4Gdqx0p01mqCu3Ift/zgRny9GJvorqfntoyhq4uM9eNtqqlQfV36WwrCR+owfOh5PCPAWt0SpULfefY5iLr11Wdj42GnnPgD4QgLCzGGu9y2h6sKPBEpoYzY26o7Xej6M+qFx7JriVBFCo4zD78BaxA6BSzEQAA");
+	//     Code to be executed before conditionals are applied and the window is drawn.
+	public override void PreDraw()
     {
         if (Service.Configuration.EnableTheme)
         {
             currentStyle = StyleModel.GetFromCurrent();
-			if (!Service.Configuration.EnableTheme)
-				currentStyle.Push();
-            else
-                StyleModel.Deserialize("DS1H4sIAAAAAAAACqVYW3PiNhT+Kxk/ZxhZtiWbtyS0m06TTmaTne3umwIKuHEwNYa9ZPa/V7J0jmRhUiC8WLbOd246N/EaiWgcj8h59BiNX6O/1QvRb1+iMRuRX+fRNBp3H2aWTFoyoCKjTFE9qd3zaG4/Lyxtad/Fo138Y8GpBdNOxLPdrezzBTShPU2WATjtvtaDLFc7Wuqv/6rtTrEGzFyDlBYWG1hsLc9vlst3+/yBrDPPAT8HBQphPyf2c2J8WitTX6MH+b0FU+1+9/xqn5+7p6LXhJNyLR4rOduV3gG6JwI+l8tZ/e1yjsQxLdI45txiYpqlBaEW6TaRwdWirGYeHo2yEKOdMfKuXm1WviyS5TlNshSEkbhghOcMxLl9lHdZNzPZIIvCkDDLwb12DNxrgL9fCGX2QUr/3ogX6SutNUwTCjpnnU9yUBl3UaJlcF1vZeOdCjW2gu00zljOKPBxuyGfi2lbbuXpbB7KtpLvOHCLD9Q4kctVXVVitfbcciyjW7ncXIrGNwjDKQWYb//9tFFCH3uQt84f6T80ujqBEOPXBEQVneM5CMTdXbGazU4scEbinORwiPo1S+AMcXOYWRgQPM1IkUN8ulfLDF69DJbT51vRPJ+eVPdVqZKq5yBMar0wZScdRATqMzh5vehweuHSd9O2NdR3MuKxpdaLjlov8OwMdejtMIPxdV8GGzZhxB/L5VoKv3JlBTioAAcVVvUkRvJQ9+FaTkY5IkJ/gjvBm/4hyJVoRFs7pTCg9aInoEcfanV8wACnQNujGX2U6/Kn/NCUro+/g8e77XKsQsP0D9jon4qPof7tl5hjG83DQGFR3VPD9nQH3PV5nH4kKvtUbSFJkRpOn5ZP9XTjV3fCcq/Xqx+ak+ZE/UzFVGw5DXmE6ZdkFm8sYx07UCulfrGZ1NPncjm/a+S2lK7rUxZmoGZn7HCo315W7Q+vV2BhBSd6gu6qur0pl3Lt0g9crxcmAeMhQP/gYMjz8jDJAth1uW7ruZoJ3ElBLex1sQHEPmHgvSAiK2kqi99jQZZe7Lihw9hBq23qpcMl4A692LXLA96U8wXMvIo71CW9MPJ2cB97c+xbLd2RX1T/N1frmLWD9b2s5LSV/rT7RggletifNGI+aerVg2jm0pmTd1mCkYRpuC8r/xLba+WPqueTE5iYaV8Fdchtv/U8QE7KF89+SD9IYzCe6smsnonK4A4DKY/py5uacqNxdCta2ZSiOvv0x9nlzcXVn2f3ZaXCNlIXTHMpEjvx2z9rY7WrpzxID3+sUHfXA6gOu1LJg25qT84dHB3C0SV6hbTzHUtVnR2wdeFN0WpiTArMNkIzFQzAnbGYFXHmK136bSejJAcLOU2KPMYrGeWUE528iISbulI6VxMwz3EmTliaqnkTKjy+ItSbOJPuBzNjnsQJpxnOLCaY/XG6cgfGWcoJjjl6wIUkKPSOnaoMzBVLqu4Rahs7ox2MoSqZPuZLdEMn04QEddUXlLiAeMlUU1bK+76FPx70CKylgmuZbuB4SSm61twDupnmKCPVnxfg1t4lhfVwqSkfft32rtU9IAe1bcvX1xs/Pl27c0ZY38D93US1khdnLqMUVGf0mPz6D52ZDyxdEgAA").Push();
+            pluginStyle.Push();
+            
         }
     }
 
     //     Code to be executed after the window is drawn.
     public override void PostDraw()
 	{
-		StyleModel.GetFromCurrent().Pop();
+		if (Service.Configuration.EnableTheme)
+			StyleModel.GetFromCurrent().Pop();
+        currentStyle.Apply();
 		
 	}
 
