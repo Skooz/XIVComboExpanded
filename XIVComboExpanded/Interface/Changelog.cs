@@ -13,6 +13,12 @@ namespace XIVComboExpanded.Interface
             return new Dictionary<string, string[]>()
                 {
                     {
+                        "v2.0.2.0",
+                        [
+                            "Added a custom opt-out theme setting for better visibility.",
+                        ]
+                    },
+                    {
                         "v2.0.1.4",
                         [
                             "Fixed SGE's Eukrasian Prognosis feature.",

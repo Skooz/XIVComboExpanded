@@ -93,6 +93,12 @@ public class PluginConfiguration : IPluginConfiguration
     /// <summary>
     /// Gets or sets a value indicating whether to allow and display secret combos.
     /// </summary>
+    [JsonProperty("Theme")]
+    public bool EnableTheme { get; set; } = true;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether to allow and display secret combos.
+    /// </summary>
     [JsonProperty("SecretUnlock")]
     public bool UnlockSecretCombos { get; set; } = true;
 

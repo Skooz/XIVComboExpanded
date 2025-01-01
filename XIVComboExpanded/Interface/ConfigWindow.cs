@@ -6,6 +6,7 @@ using System.Numerics;
 
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Style;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
@@ -24,6 +25,26 @@ namespace XIVComboExpandedPlugin.Interface;
 /// </summary>
 public class ConfigWindow : Window
 {
+    StyleModel currentStyle;
+    //     Code to be executed before conditionals are applied and the window is drawn.
+    public override void PreDraw()
+    {
+        if (Service.Configuration.EnableTheme)
+        {
+            currentStyle = StyleModel.GetFromCurrent();
+            var style = StyleModel.Deserialize("DS1H4sIAAAAAAAACqVYW3PiNhT+Kxk/ZxhZtiWbtyS0m06TTmaTne3umwIKuHEwNYa9ZPa/V7J0jmRhUiC8WLbOd246N/EaiWgcj8h59BiNX6O/1QvRb1+iMRuRX+fRNBp3H2aWTFoyoCKjTFE9qd3zaG4/Lyxtad/Fo138Y8GpBdNOxLPdrezzBTShPU2WATjtvtaDLFc7Wuqv/6rtTrEGzFyDlBYWG1hsLc9vlst3+/yBrDPPAT8HBQphPyf2c2J8WitTX6MH+b0FU+1+9/xqn5+7p6LXhJNyLR4rOduV3gG6JwI+l8tZ/e1yjsQxLdI45txiYpqlBaEW6TaRwdWirGYeHo2yEKOdMfKuXm1WviyS5TlNshSEkbhghOcMxLl9lHdZNzPZIIvCkDDLwb12DNxrgL9fCGX2QUr/3ogX6SutNUwTCjpnnU9yUBl3UaJlcF1vZeOdCjW2gu00zljOKPBxuyGfi2lbbuXpbB7KtpLvOHCLD9Q4kctVXVVitfbcciyjW7ncXIrGNwjDKQWYb//9tFFCH3uQt84f6T80ujqBEOPXBEQVneM5CMTdXbGazU4scEbinORwiPo1S+AMcXOYWRgQPM1IkUN8ulfLDF69DJbT51vRPJ+eVPdVqZKq5yBMar0wZScdRATqMzh5vehweuHSd9O2NdR3MuKxpdaLjlov8OwMdejtMIPxdV8GGzZhxB/L5VoKv3JlBTioAAcVVvUkRvJQ9+FaTkY5IkJ/gjvBm/4hyJVoRFs7pTCg9aInoEcfanV8wACnQNujGX2U6/Kn/NCUro+/g8e77XKsQsP0D9jon4qPof7tl5hjG83DQGFR3VPD9nQH3PV5nH4kKvtUbSFJkRpOn5ZP9XTjV3fCcq/Xqx+ak+ZE/UzFVGw5DXmE6ZdkFm8sYx07UCulfrGZ1NPncjm/a+S2lK7rUxZmoGZn7HCo315W7Q+vV2BhBSd6gu6qur0pl3Lt0g9crxcmAeMhQP/gYMjz8jDJAth1uW7ruZoJ3ElBLex1sQHEPmHgvSAiK2kqi99jQZZe7Lihw9hBq23qpcMl4A692LXLA96U8wXMvIo71CW9MPJ2cB97c+xbLd2RX1T/N1frmLWD9b2s5LSV/rT7RggletifNGI+aerVg2jm0pmTd1mCkYRpuC8r/xLba+WPqueTE5iYaV8Fdchtv/U8QE7KF89+SD9IYzCe6smsnonK4A4DKY/py5uacqNxdCta2ZSiOvv0x9nlzcXVn2f3ZaXCNlIXTHMpEjvx2z9rY7WrpzxID3+sUHfXA6gOu1LJg25qT84dHB3C0SV6hbTzHUtVnR2wdeFN0WpiTArMNkIzFQzAnbGYFXHmK136bSejJAcLOU2KPMYrGeWUE528iISbulI6VxMwz3EmTliaqnkTKjy+ItSbOJPuBzNjnsQJpxnOLCaY/XG6cgfGWcoJjjl6wIUkKPSOnaoMzBVLqu4Rahs7ox2MoSqZPuZLdEMn04QEddUXlLiAeMlUU1bK+76FPx70CKylgmuZbuB4SSm61twDupnmKCPVnxfg1t4lhfVwqSkfft32rtU9IAe1bcvX1xs/Pl27c0ZY38D93US1khdnLqMUVGf0mPz6D52ZDyxdEgAA");
+            style.Push();
+        }
+    }
+
+    //     Code to be executed after the window is drawn.
+    public override void PostDraw()
+	{
+		StyleModel.GetFromCurrent().Pop();
+		if (Service.Configuration.EnableTheme)
+			currentStyle.Push();
+	}
+
     public enum Tabs
     {
         Classic = 1,
@@ -348,6 +369,14 @@ public class ConfigWindow : Window
                             {
                                 Service.Configuration.HideIcons = hideIcons;
                                 Service.Configuration.Save();
+                            }
+
+                            var enableTheme = Service.Configuration.EnableTheme;
+                            if (ImGui.Checkbox("Do not enforce a custom theme.", ref enableTheme))
+                            {
+                                Service.Configuration.EnableTheme = enableTheme;
+								StyleModel.GetFromCurrent().Pop();
+								Service.Configuration.Save();
                             }
 
                             var hideChildren = Service.Configuration.HideChildren;

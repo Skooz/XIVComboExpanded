@@ -2,6 +2,7 @@
 
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Style;
 using Dalamud.Interface.Windowing;
 using ImGuiNET;
 using XIVComboExpandedPlugin;
@@ -86,7 +87,7 @@ namespace XIVComboExpanded.Interface
 
             ImGuiWindowFlags window_flags = ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.ChildWindow;
             ImGui.PushStyleVar(ImGuiStyleVar.ChildRounding, 5f);
-            ImGui.BeginChild("ModalSettings", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X - ImGui.GetScrollX(), 150f), true, window_flags);
+            ImGui.BeginChild("ModalSettings", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X - ImGui.GetScrollX(), 180f), true, window_flags);
 
             ImGui.PushFont(UiBuilder.MonoFont);
             ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.ParsedGold);
@@ -114,7 +115,16 @@ namespace XIVComboExpanded.Interface
             {
                 Service.Configuration.BigJobIcons = bigJobIcons;
                 Service.Configuration.Save();
-            }
+
+			}
+
+			var enableTheme = Service.Configuration.EnableTheme;
+			if (ImGui.Checkbox("Do not enforce a custom theme.", ref enableTheme))
+			{
+				Service.Configuration.EnableTheme = enableTheme;
+				StyleModel.GetFromCurrent().Pop();
+				Service.Configuration.Save();
+			}
 
             var hideIcons = Service.Configuration.HideIcons;
             if (ImGui.Checkbox("Hide icons for combos and features.", ref hideIcons))
