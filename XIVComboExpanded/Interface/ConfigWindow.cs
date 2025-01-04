@@ -25,14 +25,12 @@ namespace XIVComboExpandedPlugin.Interface;
 /// </summary>
 public class ConfigWindow : Window
 {
-    StyleModel currentStyle;
     StyleModel pluginStyle = StyleModel.Deserialize("DS1H4sIAAAAAAAACq1YWXPTMBD+K4yfO4xlWT76RhugzFCmQ8twvCmJmpi4cXCccHT631lLWl1xStqQF1vSfp/20nqV+4hHp+RlfBKNo9P76Et0WvSDr/L5cBJNYDXuZ6ZaTGixWIvFLxmI3cLqSTTT03MtW+kxH+uJ7xqcajCVeyz0RK2l7gJNUim1DLBqtglmEzm72lGyn/0By3KDFjaSL2st0qGVG6nTSbTVjD/185dW7bchZo71fwa341xPU8/aSQN23kc34len14lel89v+vlZPkG+FxxVaz6uxXR3dwmQTwP4XC2nzc+zmREmZUJYVuQaQ4oioYxqpF00BOfzqp46eGOUhijtlJFXzWqzcmULFC5QutDiZQryZ007Fa0Rz7M0j1mpMRlLyzjRuJShnkYxBb6ec7DvIO3etPxOuJ5gSZkSgjoS2I6UGUFXmFWzoya4aLaiddyfgdKgHUbBDiWPHYY8ryZdtbUniMoNE81ClTZov1m0mVB1tWvN8+CBDkTanJvkSNwY2MWQ5bypa75aOz55KtGlWG7OeOtGJzVxQVjqAK4nLWw69iCPBd/Iv237AjTsNBzt8ZnHEWaBCjMqbUaSyoyGqcIgmET86ifiN3/VOaJisrjk7cJQlPIoZZrBjCRBweKyiD1l6gpOkucYhob0L6qoDCMC3TOMeP+i8989s5uua5bPzVmFPs7xiuO4o3chuFu2WEFzEqcUPQbDOEVvm5HMREoMPDRjuIhDuAwidDV6Gh3txkeseMu7pn32gTQMoZ6U5j0WfaV+6G+zuMtzZKX5KNbVH/G2rVbP/FxYgtCipx0WyxNY9DR1bvZXoX+W7mOLDxAcW/f5+NPytpls3Jpvc2E4NXAo05r0fqVlEpAFejEv2ZAqyeQPWwkie5aMAtWomSyq5eyqFdtK2K6A5TGhDK1Lc5bmGUaYwCjJqDmhRUoJzR2y13er7rfzlcE4oXvc0FzVTfe+Woq1PaVYxk1j4ZVuA/Ajik0gKIutGWUB7KJad80MWgmbyBh/7/s3gNi3GfrE6zj7XlMVoCO6SMmiO7aubZb/hel9NZt3xxF99HrjxxoIK/6q/levDohMN+vXohaTTrgddIKlpi8Wcp8SU5n2F4hRy2ejtlnd8HYm9m1llSsB8oFvL8AZteeQvfso+wGjLgeQ4yF4v2F5gBxVd45p2Etjs4J29cf8spnyWuEOA4Ez+pse9MrRaTSC9ubFp3cR3D3VlYnvZK/vGGWkLbJ5cDjcVIB77QFSh124xEH3uFtrfW7sz40H+jcjO9uxNI8xoi7nfCePs4Gdqx0p01mqCu3Ift/zgRny9GJvorqfntoyhq4uM9eNtqqlQfV36WwrCR+owfOh5PCPAWt0SpULfefY5iLr11Wdj42GnnPgD4QgLCzGGu9y2h6sKPBEpoYzY26o7Xej6M+qFx7JriVBFCo4zD78BaxA6BSzEQAA");
 	//     Code to be executed before conditionals are applied and the window is drawn.
 	public override void PreDraw()
     {
         if (Service.Configuration.EnableTheme)
         {
-            currentStyle = StyleModel.GetFromCurrent();
             pluginStyle.Push();
             
         }
@@ -43,7 +41,6 @@ public class ConfigWindow : Window
 	{
 		if (Service.Configuration.EnableTheme)
 			StyleModel.GetFromCurrent().Pop();
-        currentStyle.Apply();
 		
 	}
 
@@ -374,10 +371,9 @@ public class ConfigWindow : Window
                             }
 
                             var enableTheme = Service.Configuration.EnableTheme;
-                            if (ImGui.Checkbox("Do not enforce a custom theme.", ref enableTheme))
+                            if (ImGui.Checkbox("Enforce the custom theme.", ref enableTheme))
                             {
                                 Service.Configuration.EnableTheme = enableTheme;
-								StyleModel.GetFromCurrent().Pop();
 								Service.Configuration.Save();
                             }
 
