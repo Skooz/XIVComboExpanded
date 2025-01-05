@@ -116,14 +116,14 @@ namespace XIVComboExpanded.Interface
                 Service.Configuration.BigJobIcons = bigJobIcons;
                 Service.Configuration.Save();
 
-			}
+            }
 
-			var enableTheme = Service.Configuration.EnableTheme;
-			if (ImGui.Checkbox("Enforce the custom theme.", ref enableTheme))
-			{
-				Service.Configuration.EnableTheme = enableTheme;
-				Service.Configuration.Save();
-			}
+            var enableTheme = Service.Configuration.EnableTheme;
+            if (ImGui.Checkbox("Enforce the custom theme.", ref enableTheme))
+            {
+                Service.Configuration.EnableTheme = enableTheme;
+                Service.Configuration.Save();
+            }
 
             var hideIcons = Service.Configuration.HideIcons;
             if (ImGui.Checkbox("Hide icons for combos and features.", ref hideIcons))
