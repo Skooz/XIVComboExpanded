@@ -67,7 +67,7 @@ internal class SwiftRaiseFeature : CustomCombo
             }
             else if (!IsEnabled(CustomComboPreset.AdvDisableVerRaiseFeature))
             {
-                if (level >= ADV.Levels.Swiftcast && CanUseAction(ADV.Swiftcast))
+                if (level >= ADV.Levels.Swiftcast && CanUseAction(ADV.Swiftcast) && IsCooldownUsable(ADV.Swiftcast))
                     return ADV.Swiftcast;
             }
         }

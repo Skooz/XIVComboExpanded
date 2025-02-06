@@ -182,13 +182,16 @@ internal class BardIronJaws : CustomCombo
             }
 
             if (IsEnabled(CustomComboPreset.BardIronJawsFeature))
-            {
-                if (level < BRD.Levels.BiteUpgrade)
+			{
+				if (level < BRD.Levels.Windbite)
+					return BRD.VenomousBite;
+
+				if (level < BRD.Levels.BiteUpgrade)
                 {
                     var venomous = TargetHasEffect(BRD.Debuffs.VenomousBite);
                     var windbite = TargetHasEffect(BRD.Debuffs.Windbite);
 
-                    if (venomous && windbite)
+                    if (venomous && windbite && level >= BRD.Levels.IronJaws)
                         return BRD.IronJaws;
 
                     if (windbite)
