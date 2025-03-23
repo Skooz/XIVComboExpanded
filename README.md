@@ -1,4 +1,4 @@
-# XIVCombo Expanded v2 [![Build](https://github.com/MKhayle/XIVComboPlugin/actions/workflows/build.yml/badge.svg)](https://github.com/daemitus/XIVComboPlugin/actions/workflows/build.yml) 
+# XIVCombo Expanded v2 [![Build](https://github.com/MKhayle/XIVComboExpanded/actions/workflows/build.yml/badge.svg)](https://github.com/MKhayle/XIVComboExpanded/actions/workflows/build.yml) 
 
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R2F1EYP)
